@@ -1,3 +1,30 @@
+/**
+
+Clustering in Node.js refers to a technique that allows a Node.js application to utilize multiple CPU cores by spawning multiple worker processes. 
+Since Node.js is inherently single-threaded, a single instance of a Node.js application can only utilize one CPU core. 
+Clustering overcomes this limitation, enabling better performance and scalability on multi-core systems.
+
+How Node.js Clustering Works:
+-----------------------------
+
+Master Process: 
+---------------
+A master process is responsible for managing the worker processes. 
+It typically does not execute the application's core logic but rather handles tasks like spawning workers, 
+listening for events from workers, and restarting crashed workers.
+
+Worker Processes: 
+-----------------
+These are independent Node.js instances that run the actual application code. 
+Each worker process operates in its own event loop and memory space, allowing them to handle requests concurrently.
+
+Shared Port: 
+------------
+All worker processes can share the same server port. 
+The master process typically acts as a load balancer, distributing incoming connections among the available worker processes, often using a round-robin approach.
+
+ */
+
 const cluster = require("cluster")
 const express = require("express")
 const os = require("os")
@@ -68,3 +95,39 @@ if (cluster.isPrimary) {
 // Server is running @ 3000
 // Server is running @ 3000
 // numReqs = 2
+
+
+
+
+
+
+
+/**
+    const cluster = require('cluster');
+    const http = require('http');
+    const numCPUs = require('os').cpus().length;
+
+    if (cluster.isMaster) {
+    console.log(`Master ${process.pid} is running`);
+
+    // Fork workers.
+    for (let i = 0; i < numCPUs; i++) {
+        cluster.fork();
+    }
+
+    cluster.on('exit', (worker, code, signal) => {
+        console.log(`worker ${worker.process.pid} died`);
+        // Optional: Re-spawn a new worker if needed
+        cluster.fork(); 
+    });
+    } else {
+    // Workers can share any TCP connection
+    // In this case it is an HTTP server
+    http.createServer((req, res) => {
+        res.writeHead(200);
+        res.end('hello world\n');
+    }).listen(8000);
+
+    console.log(`Worker ${process.pid} started`);
+    }
+ */

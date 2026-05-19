@@ -5,9 +5,18 @@ async function abc() {
   return 1
 }
 
+
+async function abc1() {
+  return new Promise((resolve) => {
+    resolve(1)
+  })
+}
+
+
 setTimeout(() => { console.log("C") }, 0)
 
 abc().then(() => console.log("i am promise")) // Promises have higher priority than setTimout(), setInterval() etc
+abc1().then(() => console.log("i am promise 2")) // Promises have higher priority than setTimout(), setInterval() etc
 
 console.log("E")
 

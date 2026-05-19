@@ -12,7 +12,7 @@ type of design patterns
 
 - Behavioral design pattern
 interaction between objects, loosely coupled - create child object easily 
-[Observer pater, state pattern, iterator pattern]
+[Observer pattern, state pattern, iterator pattern]
 
 
 <!-- https://www.youtube.com/watch?v=_Ac7CTHOFMg -->

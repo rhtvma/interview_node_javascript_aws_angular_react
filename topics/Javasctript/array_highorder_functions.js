@@ -30,14 +30,14 @@ const arrayVal = [1, 2, 3, 4]
       The Array filter() method is used to create a new array from a given array consisting of only those elements from the given array which satisfy a condition set by the argument function
 
   */
-  const mapResult = arrayVal.filter((value) => {
+  const filterResult = arrayVal.filter((value) => {
     return value % 2 === 0;
   });
 
-  console.log("filter - 1 ", mapResult)
+  console.log("filter - 1 ", filterResult)
 
-  // const mapResult2 = arrayVal.filter(item => item % 2 === 0)
-  // console.log("filter - 2 ", mapResult2)
+  // const filterResult = arrayVal.filter(item => item % 2 === 0)
+  // console.log("filter - 2 ", filterResult)
 
   /** OUTPUT - 
     [ 2, 4, 6 ]
@@ -56,7 +56,7 @@ const arrayVal = [1, 2, 3, 4]
   );
 
   // arrayVal.forEach(item => console.log("forEach - 2 ", item))
-  
+
   /** OUTPUT - 
     forEach - 1  1
     forEach - 1  2
@@ -70,7 +70,7 @@ const arrayVal = [1, 2, 3, 4]
 //  ================================ find() EXAMPLE ================================
 {
   /* find
-      he find() method of Array instances returns the first element in the provided array that satisfies the provided testing function. 
+      The find() method of Array instances returns the first element in the provided array that satisfies the provided testing function. 
       If no values satisfy the testing function, undefined is returned.
   */
   const inventory = [
@@ -112,9 +112,9 @@ const sum = objects.reduce(
 );
 
 console.log("reduce - 1 ", sum)
-  /** OUTPUT - 
-      6
-  */
+/** OUTPUT - 
+    6
+*/
 console.log("reduce - END ---------------------------------", '\n', '\n')
 
 
@@ -140,15 +140,15 @@ function groupBy(objectArray, property) {
 
 var groupedPeople = groupBy(people, 'class');
 console.log("reduce - 2 ", groupedPeople);
-  /** OUTPUT - 
-  {
-      cse: [ { name: 'Alice', age: 21, class: 'cse' } ],
-      ece: [
-        { name: 'Max', age: 20, class: 'ece' },
-        { name: 'Min', age: 22, class: 'ece' },
-        { name: 'Jai', age: 22, class: 'ece' },
-        { name: 'Min', age: 22, class: 'ece' }
-      ],
-      mec: [ { name: 'Jane', age: 20, class: 'mec' } ]
-    }
+/** OUTPUT -
+{
+    cse: [ { name: 'Alice', age: 21, class: 'cse' } ],
+    ece: [
+      { name: 'Max', age: 20, class: 'ece' },
+      { name: 'Min', age: 22, class: 'ece' },
+      { name: 'Jai', age: 22, class: 'ece' },
+      { name: 'Min', age: 22, class: 'ece' }
+    ],
+    mec: [ { name: 'Jane', age: 20, class: 'mec' } ]
+  }
 */
