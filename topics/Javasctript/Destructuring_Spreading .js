@@ -13,14 +13,14 @@ let array1 = [1, 2, 3, 4, 5]
 
 // But this method is old and clunky, and there is a better way to do it – using array destructuring. It looks like this:
 
-let [ indexOne, indexTwo, indexThree, indexFour, indexFive ] = array1;
+let [indexOne, indexTwo, indexThree, indexFour, indexFive] = array1;
 
 console.log(indexOne, indexTwo, indexThree, indexFour, indexFive)
 
-let [ indexOne1, indexTwo2, , indexFour4, indexFive5 ] = array1;
+let [indexOne1, indexTwo2, , indexFour4, indexFive5] = array1;
 // Here, we have skipped indexThird, and there's an empty space between indexTwo and indexFour.
 
-console.log(indexOne1, indexTwo2, indexFour4, indexFive5 )
+console.log(indexOne1, indexTwo2, indexFour4, indexFive5)
 
 console.log("Object Destructuring")
 
@@ -28,7 +28,7 @@ console.log("Object Destructuring")
 // This destructuring works well with objects too. Let me give you an example.
 let object = {
     name: "Nishant",
-    age: 24, 
+    age: 24,
     salary: 200,
     height: '20 meters',
     weight: '70 KG'
@@ -90,7 +90,7 @@ console.log("Spread operator on Object")
 
 let object1 = {
     firstName: "Nishant",
-    age: 24, 
+    age: 24,
     salary: 300,
 }
 
@@ -100,5 +100,14 @@ let object2 = {
     weight: '70 KG'
 }
 
-let object3 = {...object1, ...object2}
+let object3 = { ...object1, ...object2 }
 console.log(object3);
+
+
+// REST operator 
+const arr = [1,2,3,4,5]
+const ab = (...params) => {  //<= this is REST operator here
+
+}
+
+ab(...arr) // <= this is spread operator
