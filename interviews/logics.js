@@ -1,7 +1,7 @@
-LINK: https://bonsaiden.github.io/JavaScript-Garden/#object
+// LINK: https://bonsaiden.github.io/JavaScript-Garden/#object
 
 // -------------------------------1------------------------------------
-function foo() { }
+function foo() {}
 var var1 = new foo();
 console.log(var1.constructor);
 //output : [Function: foo]
@@ -10,33 +10,34 @@ console.log(var1.constructor);
 var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 array.forEach((value) => {
-    "use strict";
-    if (value === 3) {
-        break; // error
-    }
-    console.log("hello");
-})
+  "use strict";
+  if (value === 3) {
+    // break; // error
+    return;
+  }
+  console.log("hello");
+});
 //output : SyntaxError: Illegal break statement
 //Reason : You can't break from a forEach
 // -------------------------------3 deleting a defined variable ------------------------------------
 
-x = 42;         // creates the property x on the global object
-var y = 43;     // creates the property y on the global object, and marks it as non-configurable
+x = 42; // creates the property x on the global object
+var y = 43; // creates the property y on the global object, and marks it as non-configurable
 
 // x is a property of the global object and can be deleted
-delete x;       // returns true
+delete x; // returns true
 
-// y is not configurable, so it cannot be deleted                
-delete y;       // returns false 
+// y is not configurable, so it cannot be deleted
+delete y; // returns false
 
 // example : link(https://stackoverflow.com/questions/33239464/javascript-delete-object-property-not-working)
 
 var a = 0;
 b = 0;
 (function () {
-    console.log(delete b);
-    console.log(a);
-    console.log(b);
+  console.log(delete b);
+  console.log(a);
+  console.log(b);
 })();
 
 //output :
@@ -50,4 +51,3 @@ b = 0;
 //
 //output :
 // -------------------------------5------------------------------------
-

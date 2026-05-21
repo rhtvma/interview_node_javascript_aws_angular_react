@@ -12,26 +12,22 @@ setImmediate(() => {
 */
 
 // if you move the two calls within an I/O cycle, the immediate callback is always executed first:
-const fs = require('fs');
+const fs = require("fs");
 fs.readFile(__filename, () => {
-    setTimeout(() => {
-        console.log('timeout');
-    }, 0);
+  setTimeout(() => {
+    console.log("timeout");
+  }, 0);
 
-    setImmediate(() => {
-        console.log('immediate');
-    });
+  setImmediate(() => {
+    console.log("immediate");
+  });
 });
 
 /*
 The main advantage to using setImmediate() over setTimeout() is setImmediate() will always be executed before any timers if scheduled within an I/O cycle, independently of how many timers are present.
 */
 
-
-
-
-
- // ============================================ Another Example ==========================================================
+// ============================================ Another Example ==========================================================
 /*1: setTimeout is simply like calling the function after delay has finished. Whenever a function is called it is not executed immediately, 
            but queued so that it is executed after all the executing and currently queued eventhandlers finish first. 
            setTimeout(,0) essentially means execute after all current functions in the present queue get executed. 
@@ -44,35 +40,46 @@ The main advantage to using setImmediate() over setTimeout() is setImmediate() w
 
 Also (setTimeout,0) will be slow because it will check the timer at least once before executing. At times it can be twice as slow. Here is a benchmark.
 */
-var Suite = require('benchmark').Suite
-var fs = require('fs')
+var Suite = require("benchmark").Suite;
 
-var suite = new Suite
+var suite = new Suite();
 
-suite.add('deffered.resolve()', function(deferred) {
-  deferred.resolve()
-}, {defer: true})
+suite.add(
+  "deffered.resolve()",
+  function (deferred) {
+    deferred.resolve();
+  },
+  { defer: true },
+);
 
-suite.add('setImmediate()', function(deferred) {
-  setImmediate(function() {
-    deferred.resolve()
-  })
-}, {defer: true})
+suite.add(
+  "setImmediate()",
+  function (deferred) {
+    setImmediate(function () {
+      deferred.resolve();
+    });
+  },
+  { defer: true },
+);
 
-suite.add('setTimeout(,0)', function(deferred) {
-  setTimeout(function() {
-    deferred.resolve()
-  },0)
-}, {defer: true})
+suite.add(
+  "setTimeout(,0)",
+  function (deferred) {
+    setTimeout(function () {
+      deferred.resolve();
+    }, 0);
+  },
+  { defer: true },
+);
 
 suite
-.on('cycle', function(event) {
-  console.log(String(event.target));
-})
-.on('complete', function() {
-  console.log('Fastest is ' + this.filter('fastest').pluck('name'));
-})
-.run({async: true})
+  .on("cycle", function (event) {
+    console.log(String(event.target));
+  })
+  .on("complete", function () {
+    console.log("Fastest is " + this.filter("fastest").pluck("name"));
+  })
+  .run({ async: true });
 
 // Output :
 // deffered.resolve() x 993 ops/sec Â±0.67% (22 runs sampled)
@@ -88,15 +95,15 @@ setTimeout is un-intrusive way of calling functions after some time. Its just li
 
 // ============================== Another Example ======================================
 
-http://voidcanvas.com/setimmediate-vs-nexttick-vs-settimeout/
+// http://voidcanvas.com/setimmediate-vs-nexttick-vs-settimeout/
 
-setTimeout(function(){
-    console.log("SETTIMEOUT");
+setTimeout(function () {
+  console.log("SETTIMEOUT");
 });
-setImmediate(function(){
-    console.log("SETIMMEDIATE");
+setImmediate(function () {
+  console.log("SETIMMEDIATE");
 });
- 
+
 //run it
 // node index.js
 // OUTPUT
@@ -104,4 +111,3 @@ setImmediate(function(){
 // SETIMMEDIATE
 
 // In this setTimeout printed before why ?
-
