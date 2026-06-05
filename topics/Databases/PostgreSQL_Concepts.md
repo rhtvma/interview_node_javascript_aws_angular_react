@@ -349,9 +349,17 @@ INNER JOIN comments c ON p.id = c.post_id;
 
 ## Indexes
 
+**Definition:** Indexes are database objects that improve the speed of data retrieval operations on tables. They work like a book's index, allowing the database to find data without scanning every row.
+
+**Purpose:** Speed up SELECT queries, WHERE clauses, JOIN operations, and ORDER BY clauses at the cost of slower INSERT, UPDATE, and DELETE operations.
+
 ### Types of Indexes
 
 #### B-tree Index (Default)
+**Definition:** Balanced tree structure that maintains sorted data and allows searches, insertions, and deletions in logarithmic time.
+
+**Best for:** Equality and range queries (<, <=, >, >=, BETWEEN)
+
 ```sql
 -- Best for equality and range queries
 CREATE INDEX idx_users_email ON users(email);
@@ -362,12 +370,20 @@ CREATE INDEX idx_users_name_age ON users(username, age);
 ```
 
 #### Hash Index
+**Definition:** Uses a hash function to map keys to index entries. Only supports equality comparisons.
+
+**Best for:** Simple equality lookups (=)
+
 ```sql
 -- Best for equality comparisons only
 CREATE INDEX idx_users_email_hash ON users USING HASH (email);
 ```
 
 #### GIN Index (Generalized Inverted Index)
+**Definition:** Inverted index that handles values containing multiple component values, like arrays or full-text search.
+
+**Best for:** JSONB, arrays, full-text search, composite types
+
 ```sql
 -- Best for JSONB, arrays, full-text search
 CREATE INDEX idx_products_data ON products USING GIN (data);
@@ -375,12 +391,20 @@ CREATE INDEX idx_users_tags ON users USING GIN (tags);
 ```
 
 #### GiST Index (Generalized Search Tree)
+**Definition:** Balanced tree structure that can be used for various data types and custom operators.
+
+**Best for:** Geometric data, full-text search, nearest-neighbor searches
+
 ```sql
 -- Best for geometric data, full-text search
 CREATE INDEX idx_locations ON locations USING GIST (coordinates);
 ```
 
 #### BRIN Index (Block Range Index)
+**Definition:** Stores summaries of values in consecutive physical block ranges. Very space-efficient.
+
+**Best for:** Very large tables with natural ordering (timestamps, sequential IDs)
+
 ```sql
 -- Best for very large tables with natural ordering
 CREATE INDEX idx_logs_created ON logs USING BRIN (created_at);
@@ -488,11 +512,21 @@ LOCK TABLE users IN ACCESS EXCLUSIVE MODE;
 ## Views & Materialized Views
 
 ### Views
+**Definition:** A view is a virtual table based on a SQL query. It doesn't store data physically but provides a way to simplify complex queries and present data in a specific format.
+
+**Purpose:** Simplify complex queries, provide data abstraction, enhance security by limiting data access, and maintain backward compatibility.
+
+**Characteristics:**
+- No physical storage (virtual table)
+- Always shows current data
+- Can be updatable (simple views)
+- Query executed every time view is accessed
+
 ```sql
 -- Create view
-CREATE VIEW active_users AS 
-SELECT id, username, email 
-FROM users 
+CREATE VIEW active_users AS
+SELECT id, username, email
+FROM users
 WHERE active = true;
 
 -- Query view
@@ -505,16 +539,33 @@ UPDATE active_users SET email = 'new@example.com' WHERE id = 1;
 DROP VIEW active_users;
 
 -- Replace view
-CREATE OR REPLACE VIEW active_users AS 
-SELECT id, username, email, created_at 
-FROM users 
+CREATE OR REPLACE VIEW active_users AS
+SELECT id, username, email, created_at
+FROM users
 WHERE active = true;
 ```
 
 ### Materialized Views
+**Definition:** A materialized view is a database object that stores the result of a query physically. Unlike regular views, it contains actual data that must be refreshed to stay current.
+
+**Purpose:** Improve query performance for complex, frequently-accessed queries by pre-computing and storing results.
+
+**Characteristics:**
+- Physical storage (actual table)
+- Shows snapshot of data at refresh time
+- Requires manual refresh
+- Much faster query performance
+- Uses more storage space
+
+**When to use:**
+- Complex aggregations or joins
+- Data doesn't change frequently
+- Query performance is critical
+- Acceptable to have slightly stale data
+
 ```sql
 -- Create materialized view (stores result)
-CREATE MATERIALIZED VIEW user_stats AS 
+CREATE MATERIALIZED VIEW user_stats AS
 SELECT 
     u.id,
     u.username,

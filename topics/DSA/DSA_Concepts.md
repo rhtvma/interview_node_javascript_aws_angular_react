@@ -135,8 +135,17 @@ arr.splice(index, 1)
 ### Common Problems
 
 #### 1. Two Sum
+**Problem:** Given an array of integers `nums` and an integer `target`, return indices of the two numbers that add up to `target`.
+
+**Example:**
+```
+Input: nums = [2, 7, 11, 15], target = 9
+Output: [0, 1]
+Explanation: nums[0] + nums[1] = 2 + 7 = 9
+```
+
+**Solution:**
 ```javascript
-// Given array and target, find two numbers that add up to target
 function twoSum(nums, target) {
   const map = new Map();
   for (let i = 0; i < nums.length; i++) {
@@ -152,6 +161,16 @@ function twoSum(nums, target) {
 ```
 
 #### 2. Maximum Subarray (Kadane's Algorithm)
+**Problem:** Find the contiguous subarray with the largest sum.
+
+**Example:**
+```
+Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+Output: 6
+Explanation: [4, -1, 2, 1] has the largest sum = 6
+```
+
+**Solution:**
 ```javascript
 function maxSubArray(nums) {
   let maxSum = nums[0];
@@ -168,6 +187,19 @@ function maxSubArray(nums) {
 ```
 
 #### 3. Rotate Array
+**Problem:** Rotate an array to the right by `k` steps.
+
+**Example:**
+```
+Input: nums = [1, 2, 3, 4, 5, 6, 7], k = 3
+Output: [5, 6, 7, 1, 2, 3, 4]
+Explanation:
+rotate 1 step: [7, 1, 2, 3, 4, 5, 6]
+rotate 2 steps: [6, 7, 1, 2, 3, 4, 5]
+rotate 3 steps: [5, 6, 7, 1, 2, 3, 4]
+```
+
+**Solution:**
 ```javascript
 function rotate(nums, k) {
   k = k % nums.length;
@@ -187,6 +219,16 @@ function reverse(nums, start, end) {
 ```
 
 #### 4. Remove Duplicates from Sorted Array
+**Problem:** Remove duplicates from a sorted array in-place and return the new length.
+
+**Example:**
+```
+Input: nums = [1, 1, 2, 2, 3, 4, 4]
+Output: 4, nums = [1, 2, 3, 4, _, _, _]
+Explanation: First 4 elements are unique
+```
+
+**Solution:**
 ```javascript
 function removeDuplicates(nums) {
   if (nums.length === 0) return 0;
@@ -204,6 +246,16 @@ function removeDuplicates(nums) {
 ```
 
 #### 5. Merge Sorted Arrays
+**Problem:** Merge two sorted arrays `nums1` and `nums2` into `nums1` in sorted order.
+
+**Example:**
+```
+Input: nums1 = [1, 2, 3, 0, 0, 0], m = 3, nums2 = [2, 5, 6], n = 3
+Output: [1, 2, 2, 3, 5, 6]
+Explanation: Merge nums2 into nums1
+```
+
+**Solution:**
 ```javascript
 function merge(nums1, m, nums2, n) {
   let i = m - 1;
@@ -250,6 +302,16 @@ str.split(' ')
 ### Common Problems
 
 #### 1. Valid Palindrome
+**Problem:** Check if a string is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+**Example:**
+```
+Input: s = "A man, a plan, a canal: Panama"
+Output: true
+Explanation: "amanaplanacanalpanama" is a palindrome
+```
+
+**Solution:**
 ```javascript
 function isPalindrome(s) {
   s = s.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -266,6 +328,16 @@ function isPalindrome(s) {
 ```
 
 #### 2. Valid Anagram
+**Problem:** Check if two strings are anagrams of each other.
+
+**Example:**
+```
+Input: s = "anagram", t = "nagaram"
+Output: true
+Explanation: Both strings have same characters with same frequency
+```
+
+**Solution:**
 ```javascript
 function isAnagram(s, t) {
   if (s.length !== t.length) return false;
@@ -286,6 +358,16 @@ function isAnagram(s, t) {
 ```
 
 #### 3. Longest Substring Without Repeating Characters
+**Problem:** Find the length of the longest substring without repeating characters.
+
+**Example:**
+```
+Input: s = "abcabcbb"
+Output: 3
+Explanation: "abc" is the longest substring without repeating characters
+```
+
+**Solution:**
 ```javascript
 function lengthOfLongestSubstring(s) {
   const set = new Set();
@@ -306,6 +388,16 @@ function lengthOfLongestSubstring(s) {
 ```
 
 #### 4. Group Anagrams
+**Problem:** Group strings that are anagrams of each other.
+
+**Example:**
+```
+Input: strs = ["eat", "tea", "tan", "ate", "nat", "bat"]
+Output: [["eat","tea","ate"], ["tan","nat"], ["bat"]]
+Explanation: Group words with same letters
+```
+
+**Solution:**
 ```javascript
 function groupAnagrams(strs) {
   const map = new Map();
@@ -324,6 +416,16 @@ function groupAnagrams(strs) {
 ```
 
 #### 5. String to Integer (atoi)
+**Problem:** Convert a string to a 32-bit signed integer, handling whitespace, signs, and overflow.
+
+**Example:**
+```
+Input: s = "   -42"
+Output: -42
+Explanation: Trim whitespace, read sign, convert digits
+```
+
+**Solution:**
 ```javascript
 function myAtoi(s) {
   s = s.trim();
@@ -379,6 +481,16 @@ class ListNode {
 ### Common Problems
 
 #### 1. Reverse Linked List
+**Problem:** Reverse a singly linked list.
+
+**Example:**
+```
+Input: head = 1 -> 2 -> 3 -> 4 -> 5
+Output: 5 -> 4 -> 3 -> 2 -> 1
+Explanation: Reverse the direction of all pointers
+```
+
+**Solution:**
 ```javascript
 function reverseList(head) {
   let prev = null;
@@ -397,6 +509,16 @@ function reverseList(head) {
 ```
 
 #### 2. Detect Cycle (Floyd's Algorithm)
+**Problem:** Determine if a linked list has a cycle.
+
+**Example:**
+```
+Input: head = 3 -> 2 -> 0 -> -4 (where -4 points back to 2)
+Output: true
+Explanation: There is a cycle in the linked list
+```
+
+**Solution:**
 ```javascript
 function hasCycle(head) {
   let slow = head;
@@ -414,6 +536,16 @@ function hasCycle(head) {
 ```
 
 #### 3. Merge Two Sorted Lists
+**Problem:** Merge two sorted linked lists into one sorted list.
+
+**Example:**
+```
+Input: l1 = 1 -> 2 -> 4, l2 = 1 -> 3 -> 4
+Output: 1 -> 1 -> 2 -> 3 -> 4 -> 4
+Explanation: Merge both lists maintaining sorted order
+```
+
+**Solution:**
 ```javascript
 function mergeTwoLists(l1, l2) {
   const dummy = new ListNode(0);
@@ -437,6 +569,16 @@ function mergeTwoLists(l1, l2) {
 ```
 
 #### 4. Remove Nth Node From End
+**Problem:** Remove the nth node from the end of a linked list.
+
+**Example:**
+```
+Input: head = 1 -> 2 -> 3 -> 4 -> 5, n = 2
+Output: 1 -> 2 -> 3 -> 5
+Explanation: Remove the 2nd node from end (node with value 4)
+```
+
+**Solution:**
 ```javascript
 function removeNthFromEnd(head, n) {
   const dummy = new ListNode(0);
@@ -463,6 +605,20 @@ function removeNthFromEnd(head, n) {
 ```
 
 #### 5. Find Middle of Linked List
+**Problem:** Find the middle node of a linked list. If two middle nodes, return the second one.
+
+**Example:**
+```
+Input: head = 1 -> 2 -> 3 -> 4 -> 5
+Output: 3
+Explanation: The middle node is 3
+
+Input: head = 1 -> 2 -> 3 -> 4 -> 5 -> 6
+Output: 4
+Explanation: Two middle nodes (3 and 4), return second one
+```
+
+**Solution:**
 ```javascript
 function middleNode(head) {
   let slow = head;
@@ -543,6 +699,20 @@ class Queue {
 ### Common Problems
 
 #### 1. Valid Parentheses
+**Problem:** Determine if a string of parentheses is valid (properly opened and closed).
+
+**Example:**
+```
+Input: s = "()[]{}"
+Output: true
+Explanation: All brackets are properly opened and closed
+
+Input: s = "([)]"
+Output: false
+Explanation: Brackets are not properly nested
+```
+
+**Solution:**
 ```javascript
 function isValid(s) {
   const stack = [];
@@ -562,6 +732,27 @@ function isValid(s) {
 ```
 
 #### 2. Min Stack
+**Problem:** Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+**Example:**
+```
+Input:
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[[],[-2],[0],[-3],[],[],[],[]]
+
+Output: [null,null,null,null,-3,null,0,-2]
+Explanation:
+MinStack minStack = new MinStack();
+minStack.push(-2);
+minStack.push(0);
+minStack.push(-3);
+minStack.getMin(); // return -3
+minStack.pop();
+minStack.top();    // return 0
+minStack.getMin(); // return -2
+```
+
+**Solution:**
 ```javascript
 class MinStack {
   constructor() {
@@ -595,6 +786,25 @@ class MinStack {
 ```
 
 #### 3. Implement Queue using Stacks
+**Problem:** Implement a queue using only two stacks.
+
+**Example:**
+```
+Input:
+["MyQueue", "push", "push", "peek", "pop", "empty"]
+[[], [1], [2], [], [], []]
+
+Output: [null, null, null, 1, 1, false]
+Explanation:
+MyQueue myQueue = new MyQueue();
+myQueue.push(1); // queue is: [1]
+myQueue.push(2); // queue is: [1, 2]
+myQueue.peek();  // return 1
+myQueue.pop();   // return 1, queue is [2]
+myQueue.empty(); // return false
+```
+
+**Solution:**
 ```javascript
 class MyQueue {
   constructor() {
@@ -671,6 +881,17 @@ class HashTable {
 ### Common Problems
 
 #### 1. Two Sum (using Hash Map)
+
+**Problem:** Given an array of integers `nums` and an integer `target`, return indices of the two numbers that add up to `target`.
+
+**Example:**
+```
+Input: nums = [2, 7, 11, 15], target = 9
+Output: [0, 1]
+Explanation: nums[0] + nums[1] = 2 + 7 = 9
+```
+
+**Solution:**
 ```javascript
 function twoSum(nums, target) {
   const map = new Map();
@@ -683,9 +904,21 @@ function twoSum(nums, target) {
   }
   return [];
 }
+// Time: O(n), Space: O(n)
 ```
 
 #### 2. First Unique Character
+
+**Problem:** Given a string `s`, find the first non-repeating character and return its index. If it doesn't exist, return -1.
+
+**Example:**
+```
+Input: s = "leetcode"
+Output: 0
+Explanation: 'l' is the first character that appears only once
+```
+
+**Solution:**
 ```javascript
 function firstUniqChar(s) {
   const count = {};
@@ -698,9 +931,21 @@ function firstUniqChar(s) {
   }
   return -1;
 }
+// Time: O(n), Space: O(1) - at most 26 lowercase letters
 ```
 
 #### 3. Longest Consecutive Sequence
+
+**Problem:** Given an unsorted array of integers `nums`, return the length of the longest consecutive elements sequence.
+
+**Example:**
+```
+Input: nums = [100, 4, 200, 1, 3, 2]
+Output: 4
+Explanation: The longest consecutive sequence is [1, 2, 3, 4]
+```
+
+**Solution:**
 ```javascript
 function longestConsecutive(nums) {
   const set = new Set(nums);
@@ -823,6 +1068,22 @@ function levelOrder(root) {
 ### Common Problems
 
 #### 1. Maximum Depth
+
+**Problem:** Given the root of a binary tree, return its maximum depth (number of nodes along the longest path from root to leaf).
+
+**Example:**
+```
+Input: root = [3,9,20,null,null,15,7]
+       3
+      / \
+     9  20
+       /  \
+      15   7
+Output: 3
+Explanation: The longest path is 3 -> 20 -> 15 (or 7)
+```
+
+**Solution:**
 ```javascript
 function maxDepth(root) {
   if (!root) return 0;
@@ -832,6 +1093,20 @@ function maxDepth(root) {
 ```
 
 #### 2. Validate Binary Search Tree
+
+**Problem:** Given the root of a binary tree, determine if it is a valid binary search tree (BST). A valid BST has all left descendants < node < all right descendants.
+
+**Example:**
+```
+Input: root = [2,1,3]
+       2
+      / \
+     1   3
+Output: true
+Explanation: All nodes satisfy BST property
+```
+
+**Solution:**
 ```javascript
 function isValidBST(root, min = -Infinity, max = Infinity) {
   if (!root) return true;
@@ -841,9 +1116,28 @@ function isValidBST(root, min = -Infinity, max = Infinity) {
   return isValidBST(root.left, min, root.val) &&
          isValidBST(root.right, root.val, max);
 }
+// Time: O(n), Space: O(h)
 ```
 
 #### 3. Lowest Common Ancestor
+
+**Problem:** Given a binary tree, find the lowest common ancestor (LCA) of two given nodes. The LCA is the lowest node that has both nodes as descendants.
+
+**Example:**
+```
+Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+       3
+      / \
+     5   1
+    / \ / \
+   6  2 0  8
+     / \
+    7   4
+Output: 3
+Explanation: LCA of nodes 5 and 1 is 3
+```
+
+**Solution:**
 ```javascript
 function lowestCommonAncestor(root, p, q) {
   if (!root || root === p || root === q) return root;
@@ -854,9 +1148,26 @@ function lowestCommonAncestor(root, p, q) {
   if (left && right) return root;
   return left || right;
 }
+// Time: O(n), Space: O(h)
 ```
 
 #### 4. Symmetric Tree
+
+**Problem:** Given the root of a binary tree, check whether it is a mirror of itself (symmetric around its center).
+
+**Example:**
+```
+Input: root = [1,2,2,3,4,4,3]
+       1
+      / \
+     2   2
+    / \ / \
+   3  4 4  3
+Output: true
+Explanation: Tree is symmetric
+```
+
+**Solution:**
 ```javascript
 function isSymmetric(root) {
   function isMirror(left, right) {
@@ -870,9 +1181,26 @@ function isSymmetric(root) {
   
   return isMirror(root, root);
 }
+// Time: O(n), Space: O(h)
 ```
 
 #### 5. Binary Tree Right Side View
+
+**Problem:** Given the root of a binary tree, return the values of the nodes you can see when looking at the tree from the right side (top to bottom).
+
+**Example:**
+```
+Input: root = [1,2,3,null,5,null,4]
+       1
+      / \
+     2   3
+      \   \
+       5   4
+Output: [1, 3, 4]
+Explanation: From right side, you see 1, then 3, then 4
+```
+
+**Solution:**
 ```javascript
 function rightSideView(root) {
   if (!root) return [];
@@ -897,6 +1225,7 @@ function rightSideView(root) {
   
   return result;
 }
+// Time: O(n), Space: O(w) where w is max width
 ```
 
 ---
@@ -989,6 +1318,22 @@ function bfs(graph, start) {
 ### Common Problems
 
 #### 1. Number of Islands
+
+**Problem:** Given a 2D grid of '1's (land) and '0's (water), count the number of islands. An island is surrounded by water and formed by connecting adjacent lands horizontally or vertically.
+
+**Example:**
+```
+Input: grid = [
+  ["1","1","0","0","0"],
+  ["1","1","0","0","0"],
+  ["0","0","1","0","0"],
+  ["0","0","0","1","1"]
+]
+Output: 3
+Explanation: There are 3 separate islands
+```
+
+**Solution:**
 ```javascript
 function numIslands(grid) {
   if (!grid || grid.length === 0) return 0;
@@ -1018,9 +1363,24 @@ function numIslands(grid) {
   
   return count;
 }
+// Time: O(m*n), Space: O(m*n) for recursion stack
 ```
 
 #### 2. Clone Graph
+
+**Problem:** Given a reference of a node in a connected undirected graph, return a deep copy (clone) of the graph. Each node contains a value and a list of its neighbors.
+
+**Example:**
+```
+Input: adjList = [[2,4],[1,3],[2,4],[1,3]]
+Output: [[2,4],[1,3],[2,4],[1,3]]
+Explanation: Graph with 4 nodes:
+1 -- 2
+|    |
+4 -- 3
+```
+
+**Solution:**
 ```javascript
 function cloneGraph(node) {
   if (!node) return null;
@@ -1044,9 +1404,25 @@ function cloneGraph(node) {
   
   return clone(node);
 }
+// Time: O(n + e), Space: O(n) where n is nodes, e is edges
 ```
 
 #### 3. Course Schedule (Cycle Detection)
+
+**Problem:** There are `numCourses` courses labeled from 0 to numCourses-1. Given prerequisites array where prerequisites[i] = [ai, bi] indicates you must take course bi before ai, return true if you can finish all courses.
+
+**Example:**
+```
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+Explanation: Take course 0, then course 1
+
+Input: numCourses = 2, prerequisites = [[1,0],[0,1]]
+Output: false
+Explanation: Circular dependency - impossible to complete
+```
+
+**Solution:**
 ```javascript
 function canFinish(numCourses, prerequisites) {
   const graph = Array.from({ length: numCourses }, () => []);
@@ -1078,6 +1454,7 @@ function canFinish(numCourses, prerequisites) {
   
   return true;
 }
+// Time: O(V + E), Space: O(V + E) where V is courses, E is prerequisites
 ```
 
 ---
