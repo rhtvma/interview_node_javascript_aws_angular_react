@@ -29,14 +29,14 @@ The main advantage to using setImmediate() over setTimeout() is setImmediate() w
 
 // ============================================ Another Example ==========================================================
 /*1: setTimeout is simply like calling the function after delay has finished. Whenever a function is called it is not executed immediately, 
-           but queued so that it is executed after all the executing and currently queued eventhandlers finish first. 
-           setTimeout(,0) essentially means execute after all current functions in the present queue get executed. 
-           No guarantees can be made about how long it could take.
+          but queued so that it is executed after all the executing and currently queued event handlers finish first. 
+          setTimeout(,0) essentially means execute after all current functions in the present queue get executed. 
+          No guarantees can be made about how long it could take.
 
 2: setImmediate is similar in this regard except that it doesn't use queue of functions. 
-           It checks queue of I/O eventhandlers. If all I/O events in the current snapshot are processed, 
-           it executes the callback. It queues them immediately after the last I/O handler somewhat like process.nextTick. 
-           So it is faster.
+          It checks queue of I/O event handlers. If all I/O events in the current snapshot are processed, 
+          it executes the callback. It queues them immediately after the last I/O handler somewhat like process.nextTick. 
+          So it is faster.
 
 Also (setTimeout,0) will be slow because it will check the timer at least once before executing. At times it can be twice as slow. Here is a benchmark.
 */

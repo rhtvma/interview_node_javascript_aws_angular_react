@@ -1,7 +1,0 @@
-1- What is node.js
-2- How node js works if it is single threaded 
-3- How to optimise cpu, bcz CPU has more than 1 thread but node.js uses single thread.
-4- what is callback?
-5- Why promises came to the picture 
-6- What are the diff between callback and promise 
-7- Promise.all Vs Promise.allSatteled 
