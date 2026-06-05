@@ -72,29 +72,38 @@ A comprehensive React application demonstrating **ALL major React concepts** for
 ```
 src/
 ├── components/           # Reusable components
+│   ├── home/            # Home page components (NEW - Refactored)
+│   │   ├── FeatureCard.jsx    # Reusable feature card
+│   │   ├── TopicCard.jsx      # Reusable topic card
+│   │   ├── StatCard.jsx       # Reusable stat card
+│   │   └── WelcomeCard.jsx    # Welcome message card
 │   ├── common/          # Common UI components
 │   ├── game/            # Game-related components
 │   ├── forms/           # Form components
 │   └── layout/          # Layout components
 ├── pages/               # Page components
-│   ├── Home.jsx
+│   ├── Home.jsx         # Home page (REFACTORED - 68% code reduction)
 │   ├── Game.jsx
 │   ├── Dashboard.jsx
 │   ├── Login.jsx
 │   └── HooksDemo.jsx
-├── context/             # Context providers
+├── data/                # Data configuration (NEW)
+│   └── homeData.js      # Centralized home page content
+├── contexts/            # Context providers
 │   ├── ThemeContext.jsx
 │   └── AuthContext.jsx
-├── redux/               # Redux store
+├── store/               # Redux store
 │   ├── store.js
 │   └── slices/
 │       ├── gameSlice.js
-│       └── userSlice.js
+│       └── counterSlice.js
 ├── hooks/               # Custom hooks
 │   ├── useLocalStorage.js
 │   ├── useFetch.js
 │   ├── useDebounce.js
-│   └── useToggle.js
+│   ├── useToggle.js
+│   ├── useTheme.js
+│   └── useAuth.js
 ├── utils/               # Utility functions
 │   ├── validators.js
 │   └── helpers.js
@@ -103,6 +112,15 @@ src/
 ├── App.jsx              # Main app component
 └── main.jsx             # Entry point
 ```
+
+### 🆕 Recent Refactoring (Home Page)
+The Home page has been refactored following React best practices:
+- **4 new reusable components** created in `src/components/home/`
+- **Data-driven architecture** with centralized content in `src/data/homeData.js`
+- **68% code reduction** in Home.jsx (364 → 116 lines)
+- **Performance optimizations** with React.memo and useCallback
+- **PropTypes validation** for type safety
+- **Zero duplication** - all repeated patterns extracted
 
 ## 🚀 Getting Started
 
@@ -253,6 +271,8 @@ Every file includes detailed comments explaining:
 - **React Router v6**: Routing
 - **Redux Toolkit**: State management
 - **Axios**: HTTP client
+- **Tailwind CSS**: Utility-first CSS framework
+- **PropTypes**: Runtime type checking
 - **ESLint**: Code linting
 
 ## 📚 Additional Resources

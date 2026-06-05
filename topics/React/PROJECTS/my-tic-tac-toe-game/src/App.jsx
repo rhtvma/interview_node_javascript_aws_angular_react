@@ -1,7 +1,7 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import { useAuth } from './hooks/useAuth';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTheme } from './hooks/useTheme';
 import ProtectedRoute from './components/ProtectedRoute';
+import Sidebar from './components/layout/Sidebar';
 import Home from './pages/Home';
 import Game from './pages/Game';
 import HooksDemo from './pages/HooksDemo';
@@ -13,39 +13,19 @@ import './App.css';
 /**
  * MAIN APP COMPONENT
  * Interview Topic: Routing & App Structure
- * Demonstrates: React Router, navigation, layout
+ * Demonstrates: React Router, navigation, layout with sidebar
  */
 function App() {
-  const { isAuthenticated, logout } = useAuth();
   const { theme } = useTheme();
 
   return (
     <BrowserRouter>
-      <div className={`app theme-${theme}`}>
-        {/* Navigation */}
-        <nav className="main-nav">
-          <div className="nav-brand">
-            <Link to="/">React Interview App</Link>
-          </div>
+      <div className={`app theme-${theme} min-h-screen`}>
+        {/* Sidebar Navigation */}
+        <Sidebar />
 
-          <ul className="nav-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/game">Game</Link></li>
-            <li><Link to="/hooks">Hooks</Link></li>
-            <li><Link to="/forms">Forms</Link></li>
-            {isAuthenticated ? (
-              <>
-                <li><Link to="/dashboard">Dashboard</Link></li>
-                <li><button onClick={logout} className="nav-btn">Logout</button></li>
-              </>
-            ) : (
-              <li><Link to="/login">Login</Link></li>
-            )}
-          </ul>
-        </nav>
-
-        {/* Routes */}
-        <main className="main-content">
+        {/* Main Content Area */}
+        <main className="main-content md:ml-0">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/game" element={<Game />} />
