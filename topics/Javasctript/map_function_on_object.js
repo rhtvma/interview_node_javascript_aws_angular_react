@@ -1,33 +1,51 @@
-var array1 = [25, 27, 50, 59, 15, 10];
-var array2 = {
-    "abc": [{ name: "rohit", age: 15 },
+var allowedAges = [25, 27, 50, 59, 15, 10];
+
+var employeesByDepartment = {
+  abc: [
+    { name: "rohit", age: 15 },
     { name: "Anuj", age: 17 },
     { name: "Som", age: 19 },
-    { name: "Rai", age: 10 }],
-    "xyz": [{ name: "xrohit", age: 55 },
+    { name: "Rai", age: 10 },
+  ],
+  xyz: [
+    { name: "xrohit", age: 55 },
     { name: "xAnuj", age: 57 },
     { name: "xSom", age: 59 },
-    { name: "xRai", age: 50 }],
+    { name: "xRai", age: 50 },
+  ],
 };
 
-const map2 = Object.keys(array2).map((keyObj, iObj) => {
-    return array2[keyObj].map((val, key) => {
-        "use strict";
-        const found = array1.indexOf(val.age) !== -1 ? true : false;
-        if (found) {
-            val.age = val.age + 30;
-        }
-        return val;
-    })
-});
+// Increase age by 30 when the employee age exists in allowedAges.
+// Interview point: map() should return new values instead of mutating existing objects.
+const mappedEmployees = Object.keys(employeesByDepartment).map(
+  (departmentKey) => {
+    return employeesByDepartment[departmentKey].map((employee) => {
+      if (allowedAges.includes(employee.age)) {
+        return {
+          ...employee,
+          age: employee.age + 30,
+        };
+      }
 
-console.log(map2);
-// expected output: Array :
-[[{ name: 'rohit', age: 45 },
-{ name: 'Anuj', age: 17 },
-{ name: 'Som', age: 19 },
-{ name: 'Rai', age: 40 }],
-[{ name: 'xrohit', age: 55 },
-{ name: 'xAnuj', age: 57 },
-{ name: 'xSom', age: 89 },
-{ name: 'xRai', age: 80 }]]
+      return employee;
+    });
+  },
+);
+
+console.log(mappedEmployees);
+
+// Output:
+// [
+//   [
+//     { name: "rohit", age: 45 },
+//     { name: "Anuj", age: 17 },
+//     { name: "Som", age: 19 },
+//     { name: "Rai", age: 40 },
+//   ],
+//   [
+//     { name: "xrohit", age: 55 },
+//     { name: "xAnuj", age: 57 },
+//     { name: "xSom", age: 89 },
+//     { name: "xRai", age: 80 },
+//   ],
+// ]

@@ -1,29 +1,35 @@
+// Question: Find how many right rotations are needed to convert one string into another.
+// Example: chocolate -> echocolat -> techocola -> atechocol ... -> olatechoc
 
-// inp1= chocolate ->  echocolat ->  techocola  ->  atechocol
-// inp2 =olatechoc
+const rotate = (input) => {
+  if (input.length <= 1) {
+    return input;
+  }
 
-const rotate = (input) => { // rotate string
-    input = input.split("")
-    const firstIndex = input[0]
-    const lastIndex = input[input.length-1]
-    input = input.shift()
-    input = input.unshift(firstIndex)
-    input = lastIndex + input.join()
-    return input
+  return input[input.length - 1] + input.slice(0, -1);
+};
+
+const countRotations = (source, target) => {
+  if (source.length !== target.length) {
+    return -1;
   }
-  const mainFun = (inp1, inp2) => {
-        let result
-        let count = 0
-        for(const indx in inp1) {
-          if(inp2 !== result) {
-            result = rotate(inp1)
-            count = count + 1
-          }
-        }
-    return count
+
+  let result = source;
+  let count = 0;
+
+  for (let index = 0; index < source.length; index += 1) {
+    if (result === target) {
+      return count;
+    }
+
+    result = rotate(result);
+    count += 1;
   }
-  
-  mainFun('chocolate', 'olatechoc')
-  
-  
-  
+
+  return -1;
+};
+
+console.log(countRotations("chocolate", "olatechoc"));
+
+// Output: 5
+// Reason: Five right rotations convert "chocolate" into "olatechoc".

@@ -21,10 +21,10 @@ Example:
 
 ```ts
 @Directive({
-  selector: '[appHighlight]',
+  selector: "[appHighlight]",
 })
 export class HighlightDirective {
-  @Input() appHighlight = 'yellow';
+  @Input() appHighlight = "yellow";
 }
 ```
 
@@ -51,11 +51,11 @@ An outer join returns matching records plus unmatched records from one or both t
 
 Types of outer joins:
 
-| Join | Result |
-| --- | --- |
-| `LEFT JOIN` | All rows from left table and matching rows from right table |
-| `RIGHT JOIN` | All rows from right table and matching rows from left table |
-| `FULL OUTER JOIN` | All rows from both tables, matched where possible |
+| Join              | Result                                                      |
+| ----------------- | ----------------------------------------------------------- |
+| `LEFT JOIN`       | All rows from left table and matching rows from right table |
+| `RIGHT JOIN`      | All rows from right table and matching rows from left table |
+| `FULL OUTER JOIN` | All rows from both tables, matched where possible           |
 
 ## 4. What Is Middleware in Node.js and What Is Its Use?
 
@@ -88,7 +88,7 @@ Example:
 ```js
 app.use((req, res, next) => {
   if (!req.headers.authorization) {
-    return res.status(401).send('Unauthorized');
+    return res.status(401).send("Unauthorized");
   }
 
   next();

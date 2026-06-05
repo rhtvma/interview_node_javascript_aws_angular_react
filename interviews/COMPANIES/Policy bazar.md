@@ -4,12 +4,12 @@
 
 ### 1. Difference Between `var`, `let`, and `const`
 
-| Feature | `var` | `let` | `const` |
-| --- | --- | --- | --- |
-| Scope | Function scoped | Block scoped | Block scoped |
-| Re-declaration | Allowed | Not allowed in same scope | Not allowed in same scope |
-| Re-assignment | Allowed | Allowed | Not allowed |
-| Hoisting | Hoisted with `undefined` | Hoisted but in temporal dead zone | Hoisted but in temporal dead zone |
+| Feature        | `var`                    | `let`                             | `const`                           |
+| -------------- | ------------------------ | --------------------------------- | --------------------------------- |
+| Scope          | Function scoped          | Block scoped                      | Block scoped                      |
+| Re-declaration | Allowed                  | Not allowed in same scope         | Not allowed in same scope         |
+| Re-assignment  | Allowed                  | Allowed                           | Not allowed                       |
+| Hoisting       | Hoisted with `undefined` | Hoisted but in temporal dead zone | Hoisted but in temporal dead zone |
 
 Example:
 
@@ -132,16 +132,7 @@ Time complexity: `O(n)`.
 Question:
 
 ```js
-const array1 = [
-  func1,
-  func2,
-  func3,
-  func4,
-  func5,
-  func6,
-  func7,
-  func8,
-];
+const array1 = [func1, func2, func3, func4, func5, func6, func7, func8];
 ```
 
 Execute two async functions at a time. When any one completes, execute the next.
@@ -177,7 +168,7 @@ runWithConcurrency([func1, func2, func3, func4, func5, func6, func7, func8], 2)
 ```js
 function factorial(number) {
   if (number < 0) {
-    throw new Error('Factorial is not defined for negative numbers');
+    throw new Error("Factorial is not defined for negative numbers");
   }
 
   if (number === 0 || number === 1) {
@@ -280,18 +271,18 @@ ORDER BY employee_count DESC;
 Question:
 
 ```js
-console.log('a');
+console.log("a");
 
 abc = () => {
-  'use strict';
+  "use strict";
   setTimeout(() => {
-    console.log('b');
+    console.log("b");
   }, 0);
 };
 
-console.log('c');
+console.log("c");
 abc();
-console.log('d');
+console.log("d");
 ```
 
 Output:
@@ -310,16 +301,16 @@ Reason: `setTimeout` is asynchronous, so `b` is printed after the synchronous co
 Question:
 
 ```js
-console.log('a');
+console.log("a");
 
 abc = (a, b) => {
-  'use strict';
+  "use strict";
   console.log(a + b);
 };
 
-console.log('c');
+console.log("c");
 abc(2, 6);
-console.log('d');
+console.log("d");
 ```
 
 Output:
@@ -350,9 +341,9 @@ const promise = new Promise((resolve, reject) => {
   const success = true;
 
   if (success) {
-    resolve('Done');
+    resolve("Done");
   } else {
-    reject(new Error('Failed'));
+    reject(new Error("Failed"));
   }
 });
 
@@ -368,7 +359,7 @@ promise
 ```js
 async function getUsers() {
   try {
-    const response = await fetch('/api/users');
+    const response = await fetch("/api/users");
     return await response.json();
   } catch (error) {
     console.error(error);
@@ -379,12 +370,12 @@ async function getUsers() {
 
 ### 18. Difference Between Promises and Observables
 
-| Promise | Observable |
-| --- | --- |
-| Emits a single value | Can emit multiple values |
-| Executes immediately | Executes only after subscription |
-| Cannot be cancelled directly | Can be cancelled with `unsubscribe()` |
-| Native JavaScript | Provided by libraries like RxJS |
+| Promise                      | Observable                                              |
+| ---------------------------- | ------------------------------------------------------- |
+| Emits a single value         | Can emit multiple values                                |
+| Executes immediately         | Executes only after subscription                        |
+| Cannot be cancelled directly | Can be cancelled with `unsubscribe()`                   |
+| Native JavaScript            | Provided by libraries like RxJS                         |
 | Good for HTTP one-time calls | Good for streams, events, WebSocket, and reactive flows |
 
 ## Node.js and JavaScript Concepts
@@ -420,13 +411,13 @@ Basic flow:
 Example:
 
 ```js
-console.log('start');
+console.log("start");
 
-setTimeout(() => console.log('timeout'), 0);
+setTimeout(() => console.log("timeout"), 0);
 
-Promise.resolve().then(() => console.log('promise'));
+Promise.resolve().then(() => console.log("promise"));
 
-console.log('end');
+console.log("end");
 ```
 
 Output:
@@ -445,10 +436,10 @@ Scope collision happens when two or more variables with the same name conflict i
 Example:
 
 ```js
-var name = 'Amit';
+var name = "Amit";
 
 function printName() {
-  var name = 'Rahul';
+  var name = "Rahul";
   console.log(name);
 }
 ```
@@ -469,10 +460,10 @@ Using native JavaScript:
 
 ```js
 const date = new Date();
-const formattedDate = new Intl.DateTimeFormat('en-IN', {
-  day: '2-digit',
-  month: 'short',
-  year: 'numeric',
+const formattedDate = new Intl.DateTimeFormat("en-IN", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric",
 }).format(date);
 
 console.log(formattedDate);
@@ -481,9 +472,9 @@ console.log(formattedDate);
 Using a package:
 
 ```js
-import moment from 'moment';
+import moment from "moment";
 
-console.log(moment().format('DD-MMM-YYYY'));
+console.log(moment().format("DD-MMM-YYYY"));
 ```
 
 Note: Moment.js is still seen in older projects, but for new projects many teams prefer native `Intl`, `date-fns`, `Day.js`, or Luxon.
@@ -497,10 +488,10 @@ Dependency injection means providing required dependencies from outside a class 
 Angular example:
 
 ```ts
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class UserService {
   getUsers() {
-    return this.http.get('/api/users');
+    return this.http.get("/api/users");
   }
 
   constructor(private http: HttpClient) {}
@@ -533,15 +524,15 @@ Benefits:
 Use a shared service.
 
 ```js
-app.service('UserDataService', function () {
+app.service("UserDataService", function () {
   this.user = {};
 });
 
-app.controller('FirstController', function ($scope, UserDataService) {
+app.controller("FirstController", function ($scope, UserDataService) {
   $scope.user = UserDataService.user;
 });
 
-app.controller('SecondController', function ($scope, UserDataService) {
+app.controller("SecondController", function ($scope, UserDataService) {
   $scope.user = UserDataService.user;
 });
 ```
@@ -628,11 +619,11 @@ Approach:
 Example:
 
 ```ts
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class DropdownFacadeService {
   constructor(
     private dropdownService: DropdownService,
-    private countService: CountService
+    private countService: CountService,
   ) {}
 
   getDropdownWithCounts() {
@@ -643,10 +634,10 @@ export class DropdownFacadeService {
             items.map((item) => ({
               ...item,
               count: counts[item.id] || 0,
-            }))
-          )
-        )
-      )
+            })),
+          ),
+        ),
+      ),
     );
   }
 }

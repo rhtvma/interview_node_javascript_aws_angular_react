@@ -8,15 +8,15 @@
 
 ```js
 $(document).ready(() => {
-  console.log('DOM is ready');
+  console.log("DOM is ready");
 });
 ```
 
 Modern JavaScript equivalent:
 
 ```js
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM is ready');
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM is ready");
 });
 ```
 
@@ -31,11 +31,11 @@ Reason: `true` is converted to `1` in numeric operations. Multiplication has hig
 
 ## 3. Difference Between `undefined` and `null`
 
-| `undefined` | `null` |
-| --- | --- |
-| Variable declared but not assigned | Intentional empty value |
-| Assigned by JavaScript by default | Assigned by developer |
-| Type is `undefined` | Type is `object` due to legacy behavior |
+| `undefined`                        | `null`                                  |
+| ---------------------------------- | --------------------------------------- |
+| Variable declared but not assigned | Intentional empty value                 |
+| Assigned by JavaScript by default  | Assigned by developer                   |
+| Type is `undefined`                | Type is `object` due to legacy behavior |
 
 Example:
 
@@ -106,7 +106,7 @@ function createUser(name, role) {
   };
 }
 
-const user = createUser('Amit', 'admin');
+const user = createUser("Amit", "admin");
 ```
 
 Benefits:
@@ -137,8 +137,7 @@ Example:
   Parent index: {{$index}}
 
   <div ng-repeat="item in category.items track by $index">
-    Parent index: {{$parent.$index}}
-    Child index: {{$index}}
+    Parent index: {{$parent.$index}} Child index: {{$index}}
   </div>
 </div>
 ```
@@ -146,10 +145,12 @@ Example:
 Better readability:
 
 ```html
-<div ng-repeat="category in categories track by $index" ng-init="parentIndex = $index">
+<div
+  ng-repeat="category in categories track by $index"
+  ng-init="parentIndex = $index"
+>
   <div ng-repeat="item in category.items track by $index">
-    Parent index: {{parentIndex}}
-    Child index: {{$index}}
+    Parent index: {{parentIndex}} Child index: {{$index}}
   </div>
 </div>
 ```
@@ -161,7 +162,7 @@ Node.js has a global object called `global`.
 Example:
 
 ```js
-global.appName = 'Interview App';
+global.appName = "Interview App";
 console.log(global.appName);
 ```
 
@@ -216,7 +217,7 @@ Example:
 ```js
 async function getUser() {
   try {
-    const response = await fetch('/api/user');
+    const response = await fetch("/api/user");
     return await response.json();
   } catch (error) {
     console.error(error);

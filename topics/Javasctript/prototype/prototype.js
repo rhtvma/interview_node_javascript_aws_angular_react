@@ -1,26 +1,34 @@
-/* =================== Type 1 ========================*/
+/* =================== Type 1: constructor function + prototype object ======================== */
 
 var objProto = {
-    type: 'test',
-    greet: function () {
-        console.log(this.greeting + " world!");
-    }
-}
+  type: "test",
+  greet: function () {
+    console.log(this.greeting + " world!");
+  },
+};
 
 var Greeting = function (term) {
-    this.greeting = term;
+  this.greeting = term;
 };
-// https://www.youtube.com/watch?v=XNjLhxg4u6k
 
 Greeting.prototype = objProto;
+Greeting.prototype.constructor = Greeting;
 
-var obj1 = new Greeting('Rohit');
+var obj1 = new Greeting("Rohit");
 obj1.greet();
 
-/* =================== Type 2 ========================*/
+// Output: Rohit world!
+
+/* =================== Type 2: Object.create() ======================== */
+
 var obj2 = Object.create(objProto);
-obj2.greet('hi');
-/* =================== Type 3 ========================*/
+obj2.greeting = "Hi";
+obj2.greet();
 
+// Output: Hi world!
 
-/* =================== Type 4 ========================*/
+/*
+Interview point:
+JavaScript uses prototypal inheritance. If a property does not exist on the
+object itself, JavaScript checks the object's prototype chain.
+*/

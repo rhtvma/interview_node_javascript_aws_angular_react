@@ -1,4 +1,5 @@
 # useState
+
 The useState hook allows you to add state to functional components.
 
       import React, { useState } from 'react';
@@ -16,8 +17,8 @@ The useState hook allows you to add state to functional components.
         );
       }
 
-
 # useEffect
+
 The useEffect hook lets you perform side effects in function components. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes.
 
       import React, { useEffect, useState } from 'react';
@@ -37,6 +38,7 @@ The useEffect hook lets you perform side effects in function components. It serv
       }
 
 # useContext
+
 The useContext hook allows you to use the context API in a simpler way.
 
       import React, { useContext } from 'react';
@@ -50,6 +52,7 @@ The useContext hook allows you to use the context API in a simpler way.
       }
 
 # useReducer
+
 The useReducer hook is usually preferable to useState when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one.
 
       import React, { useReducer } from 'react';

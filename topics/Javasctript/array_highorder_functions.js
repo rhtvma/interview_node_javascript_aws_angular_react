@@ -1,4 +1,4 @@
-const arrayVal = [1, 2, 3, 4]
+const arrayVal = [1, 2, 3, 4];
 
 //  ================================ map() EXAMPLE ================================
 {
@@ -8,17 +8,17 @@ const arrayVal = [1, 2, 3, 4]
       The map() method in JavaScript creates a new array by calling a specific function on each element of the parent array. It does not mutate the original array.
   */
   const mapResult = arrayVal.map((val) => {
-    return val * 2
-  })
-  console.log("MAP - 1 ", mapResult)
+    return val * 2;
+  });
+  console.log("MAP - 1 ", mapResult);
 
   // const mapResult2 = arrayVal.map(item => item * 3)
   // console.log("MAP - 2 ", mapResult2)
 
-  /** OUTPUT - 
-    [ 2, 4, 6, 8, 10, 12 ]
+  /** OUTPUT -
+    [ 2, 4, 6, 8 ]
    */
-  console.log("MAP - END ---------------------------------", '\n', '\n')
+  console.log("MAP - END ---------------------------------", "\n", "\n");
 }
 
 //  ================================ filter() EXAMPLE ================================
@@ -34,15 +34,15 @@ const arrayVal = [1, 2, 3, 4]
     return value % 2 === 0;
   });
 
-  console.log("filter - 1 ", filterResult)
+  console.log("filter - 1 ", filterResult);
 
   // const filterResult = arrayVal.filter(item => item % 2 === 0)
   // console.log("filter - 2 ", filterResult)
 
-  /** OUTPUT - 
-    [ 2, 4, 6 ]
+  /** OUTPUT -
+    [ 2, 4 ]
   */
-  console.log("filter - END ---------------------------------", '\n', '\n')
+  console.log("filter - END ---------------------------------", "\n", "\n");
 }
 
 //  ================================ forEach EXAMPLE ================================
@@ -51,9 +51,8 @@ const arrayVal = [1, 2, 3, 4]
       The forEach() method executes a callback function once for each array element.
   */
   arrayVal.forEach((item) => {
-    console.log("forEach - 1 ", item)
-  }
-  );
+    console.log("forEach - 1 ", item);
+  });
 
   // arrayVal.forEach(item => console.log("forEach - 2 ", item))
 
@@ -63,9 +62,8 @@ const arrayVal = [1, 2, 3, 4]
     forEach - 1  3
     forEach - 1  4
   */
-  console.log("forEach - END ---------------------------------", '\n', '\n')
+  console.log("forEach - END ---------------------------------", "\n", "\n");
 }
-
 
 //  ================================ find() EXAMPLE ================================
 {
@@ -83,14 +81,13 @@ const arrayVal = [1, 2, 3, 4]
     return fruit.name === "cherries";
   }
 
-  console.log("find - 1 ", (inventory.find(isCherries)))
+  console.log("find - 1 ", inventory.find(isCherries));
 
   /** OUTPUT - 
     { name: 'cherries', quantity: 5 }
   */
-  console.log("find - END ---------------------------------", '\n', '\n')
+  console.log("find - END ---------------------------------", "\n", "\n");
 }
-
 
 //  ================================ reduce() EXAMPLE ================================
 
@@ -104,27 +101,25 @@ If supplied, an initial value may be used in its place.
 Otherwise the array element at index 0 is used as the initial value and iteration starts from the next element (index 1 instead of index 0).
  */
 
-
 const objects = [{ x: 1 }, { x: 2 }, { x: 3 }];
 const sum = objects.reduce(
   (accumulator, currentValue) => accumulator + currentValue.x,
   0,
 );
 
-console.log("reduce - 1 ", sum)
+console.log("reduce - 1 ", sum);
 /** OUTPUT - 
     6
 */
-console.log("reduce - END ---------------------------------", '\n', '\n')
-
+console.log("reduce - END ---------------------------------", "\n", "\n");
 
 var people = [
-  { name: 'Alice', age: 21, class: 'cse' },
-  { name: 'Max', age: 20, class: 'ece' },
-  { name: 'Min', age: 22, class: 'ece' },
-  { name: 'Jai', age: 22, class: 'ece' },
-  { name: 'Min', age: 22, class: 'ece' },
-  { name: 'Jane', age: 20, class: 'mec' }
+  { name: "Alice", age: 21, class: "cse" },
+  { name: "Max", age: 20, class: "ece" },
+  { name: "Min", age: 22, class: "ece" },
+  { name: "Jai", age: 22, class: "ece" },
+  { name: "Min", age: 22, class: "ece" },
+  { name: "Jane", age: 20, class: "mec" },
 ];
 
 function groupBy(objectArray, property) {
@@ -138,7 +133,7 @@ function groupBy(objectArray, property) {
   }, {});
 }
 
-var groupedPeople = groupBy(people, 'class');
+var groupedPeople = groupBy(people, "class");
 console.log("reduce - 2 ", groupedPeople);
 /** OUTPUT -
 {

@@ -6,11 +6,11 @@ Closures
  */
 
 function makeFunc() {
-    const name = "Mozilla";
-    function displayName() {
-        console.log(name);
-    }
-    return displayName;
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
 }
 
 const myFunc = makeFunc();
@@ -25,28 +25,27 @@ myFunc(); // Mozilla
   when myFunc is invoked, the variable name remains available for use, and "Mozilla" is passed to console.log
  */
 
-
 //  ================================ ANOTHER EXAMPLE ================================
 
 const counter = (function () {
-    let privateCounter = 0;
-    function changeBy(val) {
-        privateCounter += val;
-    }
+  let privateCounter = 0;
+  function changeBy(val) {
+    privateCounter += val;
+  }
 
-    return {
-        increment() {
-            changeBy(1);
-        },
+  return {
+    increment() {
+      changeBy(1);
+    },
 
-        decrement() {
-            changeBy(-1);
-        },
+    decrement() {
+      changeBy(-1);
+    },
 
-        value() {
-            return privateCounter;
-        },
-    };
+    value() {
+      return privateCounter;
+    },
+  };
 })();
 
 console.log(counter.value()); // 0.
@@ -58,27 +57,25 @@ console.log(counter.value()); // 2.
 counter.decrement();
 console.log(counter.value()); // 1.
 
-
-
-// 
+//
 // https://www.youtube.com/watch?v=QyUFheng6J0&t=1008s
 
 function makeAdder(n) {
-    var inc = n;
-    var sum = 0;
-    return function add () {
-      sum = sum + inc;
-      console.log(sum)
-      return sum;
-    }
-  }
-  
-  var adder3 = makeAdder(3)
-  adder3()
-  adder3()
-  adder3()
+  var inc = n;
+  var sum = 0;
+  return function add() {
+    sum = sum + inc;
+    console.log(sum);
+    return sum;
+  };
+}
 
-  /**
+var adder3 = makeAdder(3);
+adder3();
+adder3();
+adder3();
+
+/**
     Output
     3
     6
