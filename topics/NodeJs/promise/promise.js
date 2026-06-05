@@ -2,9 +2,9 @@
 //  event has to be done it is generally preferred to use callbacks (if data is not nested or inter-dependent).
 
 //  What are Promises?
-//  A promise is basically an advancement of callbacks in Node.  
+//  A promise is basically an advancement of callbacks in Node.
 //  In other words, a promise is a JavaScript object which is used to handle all the asynchronous data operations.
-//  While developing an application you may encounter that you are using a lot of nested callback functions. 
+//  While developing an application you may encounter that you are using a lot of nested callback functions.
 
 
 // # KEY NOTE
@@ -16,7 +16,6 @@
 // Promise.allSettled()
 // Promise.race()
 // Promise.any()
-
 
 console.log("=============== [ Promise.all() ] ===============")
 // ALL PROMISES MUST BE RESOLVED FOR IT TO RETURN A RESPONSE.
@@ -45,10 +44,8 @@ Promise.all(promisesArray)
 
 // Output 2 - At least one promise rejected: Promise 3 rejected
 
-
-
 console.log("=============== [ Promise.allSettled() ] ===============")
-// he Promise.allSettled method is used to handle multiple promises concurrently, just like Promise.all, 
+// Promise.allSettled method is used to handle multiple promises concurrently, just like Promise.all, 
 // but it waits for all the promises to settle (either resolve or reject) before proceeding. 
 // It returns an array of objects representing the outcomes of the input promises, 
 // including their values or reasons for rejection.
@@ -79,7 +76,6 @@ Promise.allSettled(promisesArray1).then((results) => {
 //     { status: 'rejected', reason: 'Promise 2 resolved' },
 //     { status: 'fulfilled', value: 'Promise 3 resolved' }
 //   ]
-
 
 console.log("=============== [ Promise.race() ] ===============")
 
@@ -116,7 +112,6 @@ Promise.race(promisesArray000)
 
 // Output 1 -
 // First promise resolved: Promise 2 resolved
-
 
 // NOTE :  Please note: race does not care if all are resolved or all are rejected. 
 // It will give you first settled result whether it is resolved or rejected.

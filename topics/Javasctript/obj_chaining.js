@@ -1,10 +1,10 @@
-//----------------------------------1st option without chaning---------------------------
+//----------------------------------1st option without chaining---------------------------
 
 var obj = {
     name: 'Rohit Verma',
     class: 'Computer Science',
     score: [],
-    addScore: function (val) {
+    addScore(val) {
         this.score.push(val);
     },
     doTotal: function () {
@@ -34,7 +34,7 @@ console.log(obj);
 //   average: 97.33333333333333 
 // }
 
-//----------------------------------2nd option with chaning---------------------------
+//----------------------------------2nd option with chaining---------------------------
 
 var obj = {
     name: 'Rohit Verma',

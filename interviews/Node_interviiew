@@ -1,9 +1,0 @@
-1: How to improve node js performance
-    Clusters - we can create multiple worker or threads
-    Clusters of Node.js processes can be used to run multiple instances of Node.js that can distribute workloads among their application threads
-
- 2- How do you fix Production bugs?
-    Identify the root cause.
-    Implement a solution.
-    Deploy and verify.
-    Prevent and learn.
