@@ -6,23 +6,23 @@ Node.js performance can be improved by reducing event loop blocking, scaling acr
 
 Common approaches:
 
-| Approach | Explanation |
-| --- | --- |
-| Clustering | Run multiple Node.js processes to use multiple CPU cores |
-| Worker threads | Move CPU-heavy JavaScript tasks away from the main thread |
-| Caching | Cache repeated data using memory, Redis, or CDN |
-| Database optimization | Use indexes, pagination, query optimization, and connection pooling |
-| Async I/O | Avoid blocking operations like synchronous file system calls |
-| Compression | Use gzip or Brotli for API responses where useful |
-| Load balancing | Distribute requests across multiple app instances |
-| Logging and monitoring | Track latency, memory, CPU, errors, and event loop lag |
+| Approach               | Explanation                                                         |
+| ---------------------- | ------------------------------------------------------------------- |
+| Clustering             | Run multiple Node.js processes to use multiple CPU cores            |
+| Worker threads         | Move CPU-heavy JavaScript tasks away from the main thread           |
+| Caching                | Cache repeated data using memory, Redis, or CDN                     |
+| Database optimization  | Use indexes, pagination, query optimization, and connection pooling |
+| Async I/O              | Avoid blocking operations like synchronous file system calls        |
+| Compression            | Use gzip or Brotli for API responses where useful                   |
+| Load balancing         | Distribute requests across multiple app instances                   |
+| Logging and monitoring | Track latency, memory, CPU, errors, and event loop lag              |
 
 ### Clustering Example
 
 ```js
-const cluster = require('cluster');
-const http = require('http');
-const os = require('os');
+const cluster = require("cluster");
+const http = require("http");
+const os = require("os");
 
 if (cluster.isPrimary) {
   const cpuCount = os.cpus().length;

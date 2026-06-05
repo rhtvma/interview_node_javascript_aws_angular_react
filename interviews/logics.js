@@ -19,14 +19,14 @@ console.log(constructorExample.constructor);
 var numbersForEach = [1, 2, 3, 4, 5];
 
 numbersForEach.forEach((value) => {
-  'use strict';
+  "use strict";
 
   if (value === 3) {
     // break; // SyntaxError: Illegal break statement
     return;
   }
 
-  console.log('forEach value:', value);
+  console.log("forEach value:", value);
 });
 
 // Output:
@@ -93,8 +93,8 @@ console.log(FunctionIsObjectExample.customValue);
 // console.log(2.toString()); // SyntaxError
 
 console.log((2).toString());
-console.log(2..toString());
-console.log(2 .toString());
+console.log((2).toString());
+console.log((2).toString());
 
 // Output:
 // 2
@@ -106,16 +106,16 @@ console.log(2 .toString());
 // Question: When should bracket notation be used?
 
 var propertyExample = {
-  name: 'kitten',
-  'user-role': 'admin',
-  1234: 'numeric key',
+  name: "kitten",
+  "user-role": "admin",
+  1234: "numeric key",
 };
 
-var dynamicKey = 'name';
+var dynamicKey = "name";
 
 console.log(propertyExample.name);
 console.log(propertyExample[dynamicKey]);
-console.log(propertyExample['user-role']);
+console.log(propertyExample["user-role"]);
 console.log(propertyExample[1234]);
 
 // Output:
@@ -139,7 +139,7 @@ deletePropertyExample.foo = null;
 delete deletePropertyExample.baz;
 
 console.log(Object.keys(deletePropertyExample));
-console.log('baz' in deletePropertyExample);
+console.log("baz" in deletePropertyExample);
 
 // Output:
 // [ 'bar', 'foo' ]
@@ -150,11 +150,11 @@ console.log('baz' in deletePropertyExample);
 // Question: Where does JavaScript find inherited properties?
 
 var prototypeParent = {
-  role: 'admin',
+  role: "admin",
 };
 
 var prototypeChild = Object.create(prototypeParent);
-prototypeChild.name = 'Amit';
+prototypeChild.name = "Amit";
 
 console.log(prototypeChild.name);
 console.log(prototypeChild.role);
@@ -176,10 +176,10 @@ var hasOwnParent = {
 var hasOwnChild = Object.create(hasOwnParent);
 hasOwnChild.ownValue = undefined;
 
-console.log('inheritedValue' in hasOwnChild);
-console.log(hasOwnChild.hasOwnProperty('inheritedValue'));
-console.log('ownValue' in hasOwnChild);
-console.log(hasOwnChild.hasOwnProperty('ownValue'));
+console.log("inheritedValue" in hasOwnChild);
+console.log(hasOwnChild.hasOwnProperty("inheritedValue"));
+console.log("ownValue" in hasOwnChild);
+console.log(hasOwnChild.hasOwnProperty("ownValue"));
 
 // Output:
 // true
@@ -195,11 +195,11 @@ var dangerousObject = {
   hasOwnProperty: function () {
     return false;
   },
-  name: 'Policy Bazar',
+  name: "Policy Bazar",
 };
 
-console.log(dangerousObject.hasOwnProperty('name'));
-console.log(Object.prototype.hasOwnProperty.call(dangerousObject, 'name'));
+console.log(dangerousObject.hasOwnProperty("name"));
+console.log(Object.prototype.hasOwnProperty.call(dangerousObject, "name"));
 
 // Output:
 // false
@@ -210,19 +210,19 @@ console.log(Object.prototype.hasOwnProperty.call(dangerousObject, 'name'));
 // Question: Why should for in loops be filtered?
 
 var forInParent = {
-  inheritedName: 'parent',
+  inheritedName: "parent",
 };
 
 var forInChild = Object.create(forInParent);
-forInChild.ownName = 'child';
+forInChild.ownName = "child";
 
 for (var key in forInChild) {
-  console.log('without filter:', key);
+  console.log("without filter:", key);
 }
 
 for (var ownKey in forInChild) {
   if (Object.prototype.hasOwnProperty.call(forInChild, ownKey)) {
-    console.log('with filter:', ownKey);
+    console.log("with filter:", ownKey);
   }
 }
 
@@ -236,14 +236,14 @@ for (var ownKey in forInChild) {
 // Question: Why is for in not preferred for arrays?
 
 var arrayIterationExample = [10, 20, 30];
-arrayIterationExample.customProperty = 'extra';
+arrayIterationExample.customProperty = "extra";
 
 for (var arrayKey in arrayIterationExample) {
-  console.log('for in array key:', arrayKey);
+  console.log("for in array key:", arrayKey);
 }
 
 for (var index = 0; index < arrayIterationExample.length; index += 1) {
-  console.log('normal array value:', arrayIterationExample[index]);
+  console.log("normal array value:", arrayIterationExample[index]);
 }
 
 // Output:
@@ -268,11 +268,11 @@ try {
 }
 
 function declaredFunction() {
-  return 'declaration works before definition';
+  return "declaration works before definition";
 }
 
 var functionExpression = function () {
-  return 'expression works only after assignment';
+  return "expression works only after assignment";
 };
 
 console.log(functionExpression());
@@ -287,7 +287,7 @@ console.log(functionExpression());
 // Question: What happens when an object method is assigned to a variable?
 
 var thisExample = {
-  name: 'Node.js',
+  name: "Node.js",
   printName: function () {
     return this.name;
   },
@@ -297,7 +297,7 @@ var detachedPrintName = thisExample.printName;
 
 console.log(thisExample.printName());
 console.log(detachedPrintName());
-console.log(thisExample.printName.call({ name: 'Angular' }));
+console.log(thisExample.printName.call({ name: "Angular" }));
 
 // Output in non-strict mode:
 // Node.js
@@ -383,8 +383,8 @@ console.log(getObjectType(undefined));
 // ------------------------------- 18. == type coercion ------------------------------------
 // Question: What are the outputs?
 
-console.log(10 == '10');
-console.log(10 === '10');
+console.log(10 == "10");
+console.log(10 === "10");
 console.log(null == undefined);
 console.log(null === undefined);
 console.log(new Number(10) == 10);

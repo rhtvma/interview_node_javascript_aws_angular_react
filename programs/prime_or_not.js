@@ -1,20 +1,31 @@
-//a number that is divisible only by itself and 1 (e.g. 2, 3, 5, 7, 11).
+// A prime number is divisible only by itself and 1.
+// Examples: 2, 3, 5, 7, 11.
 
-function prime(num) {
-    var i, flag = 0, number;
-    number = num;
-    for (i = 2; i <= number / 2; i++) {
-        if (number % i == 0) {
-            flag = 1;
-            break;
-        }
+function isPrime(number) {
+  if (number <= 1) {
+    return false;
+  }
+
+  for (var i = 2; i <= Math.sqrt(number); i++) {
+    if (number % i === 0) {
+      return false;
     }
-    if (flag == 0) {
-        console.log(number + "-The inputed number is Prime");
-    } else {
-        console.log(number + "-The inputted number is not Prime");
-    }
+  }
+
+  return true;
 }
 
+function printPrimeResult(number) {
+  console.log(
+    isPrime(number)
+      ? `${number} is a prime number`
+      : `${number} is not a prime number`,
+  );
+}
 
-prime(12);
+printPrimeResult(12);
+printPrimeResult(13);
+
+// Output:
+// 12 is not a prime number
+// 13 is a prime number

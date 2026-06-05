@@ -1,5 +1,5 @@
-// Include process module 
-const process = require('process');
+// Include process module
+const process = require("process");
 /**
     As you try to understand the Node.js event loop, one important part of it is process.nextTick(). Every time the event loop takes a full trip, we call it a tick.
 
@@ -22,7 +22,6 @@ process.nextTick(() => {
 });
  */
 
-
 /** OUTPUT
     Hello => number 1
     Running at next tick => number 2
@@ -38,13 +37,12 @@ process.nextTick(() => {
     Use nextTick() when you want to make sure that in the next event loop iteration that code is already executed.
  */
 
-
 // EXAMPLE 2
 process.nextTick(() => {
-    console.log('Executed in the next iteration');
+  console.log("Executed in the next iteration");
 });
 
-console.log('Executed in the current iteration');
+console.log("Executed in the current iteration");
 
 /** OUTPUT
     Executed in the current iteration

@@ -1,4 +1,3 @@
-
 /*
 Function Expression
     It is similar to a function declaration without the function name. 
@@ -6,7 +5,7 @@ Function Expression
 */
 
 const mul = function (x, y) {
-    return x * y;
+  return x * y;
 };
 console.log(mul(4, 5));
 
@@ -21,7 +20,7 @@ Arrow Functions
 const a = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
 
 const a2 = a.map(function (s) {
-    return s.length;
+  return s.length;
 });
 
 console.log("Normal way ", a2);
@@ -29,7 +28,6 @@ console.log("Normal way ", a2);
 const a3 = a.map((s) => s.length);
 
 console.log("Using Arrow Function ", a3);
-
 
 // ------------------------------------------------------------
 
@@ -40,9 +38,8 @@ Immediately Invoked Function Expression (IIFE)
 */
 
 (function () {
-    console.log("This runs immediately!");
+  console.log("This runs immediately!");
 })();
-
 
 // ------------------------------------------------------------
 
@@ -53,13 +50,12 @@ Callback Functions
 */
 
 function num(n, callback) {
-    return callback(n);
+  return callback(n);
 }
 
 const double = (n) => n * 2;
 
 console.log(num(5, double));
-
 
 // ------------------------------------------------------------
 
@@ -69,5 +65,5 @@ Anonymous Functions
     They are often used as arguments to other functions.
 */
 setTimeout(function () {
-    console.log("Anonymous function executed!");
+  console.log("Anonymous function executed!");
 }, 1000);

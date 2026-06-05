@@ -14,10 +14,10 @@ Key points:
 Example:
 
 ```js
-const http = require('http');
+const http = require("http");
 
 const server = http.createServer((req, res) => {
-  res.end('Hello from Node.js');
+  res.end("Hello from Node.js");
 });
 
 server.listen(3000);
@@ -39,13 +39,13 @@ Node.js is single-threaded for JavaScript execution, but internally it uses libu
 Example:
 
 ```js
-console.log('Start');
+console.log("Start");
 
 setTimeout(() => {
-  console.log('Timer completed');
+  console.log("Timer completed");
 }, 0);
 
-console.log('End');
+console.log("End");
 ```
 
 Output:
@@ -62,29 +62,29 @@ Node.js is excellent for I/O-heavy work, but CPU-heavy work can block the event 
 
 Common approaches:
 
-| Approach | Use Case |
-| --- | --- |
-| Cluster module | Run multiple Node.js processes across CPU cores |
-| Worker threads | Run CPU-heavy JavaScript work in separate threads |
-| Child processes | Execute separate processes for heavy tasks |
-| Load balancer | Distribute traffic across multiple Node.js instances |
-| Queue system | Move heavy work to background jobs |
-| Native addons | Use optimized native code for performance-critical work |
+| Approach        | Use Case                                                |
+| --------------- | ------------------------------------------------------- |
+| Cluster module  | Run multiple Node.js processes across CPU cores         |
+| Worker threads  | Run CPU-heavy JavaScript work in separate threads       |
+| Child processes | Execute separate processes for heavy tasks              |
+| Load balancer   | Distribute traffic across multiple Node.js instances    |
+| Queue system    | Move heavy work to background jobs                      |
+| Native addons   | Use optimized native code for performance-critical work |
 
 Example using worker threads:
 
 ```js
-const { Worker } = require('worker_threads');
+const { Worker } = require("worker_threads");
 
 function runWorker(data) {
   return new Promise((resolve, reject) => {
-    const worker = new Worker('./worker.js', {
+    const worker = new Worker("./worker.js", {
       workerData: data,
     });
 
-    worker.on('message', resolve);
-    worker.on('error', reject);
-    worker.on('exit', (code) => {
+    worker.on("message", resolve);
+    worker.on("error", reject);
+    worker.on("exit", (code) => {
       if (code !== 0) {
         reject(new Error(`Worker stopped with exit code ${code}`));
       }
@@ -102,9 +102,9 @@ A callback is a function passed as an argument to another function. It is called
 Example:
 
 ```js
-const fs = require('fs');
+const fs = require("fs");
 
-fs.readFile('data.txt', 'utf8', (error, data) => {
+fs.readFile("data.txt", "utf8", (error, data) => {
   if (error) {
     console.error(error);
     return;
@@ -164,13 +164,13 @@ async function getUserPaymentDetails(userId) {
 
 ## 6. Difference Between Callback and Promise
 
-| Callback | Promise |
-| --- | --- |
-| Function passed to another function | Object representing future completion or failure |
-| Can lead to nested code | Supports clean chaining |
-| Error handling is manual | Centralized error handling with `.catch()` |
-| No built-in state | Has `pending`, `fulfilled`, and `rejected` states |
-| Harder to compose | Easy to compose with `Promise.all`, `Promise.race`, etc. |
+| Callback                            | Promise                                                  |
+| ----------------------------------- | -------------------------------------------------------- |
+| Function passed to another function | Object representing future completion or failure         |
+| Can lead to nested code             | Supports clean chaining                                  |
+| Error handling is manual            | Centralized error handling with `.catch()`               |
+| No built-in state                   | Has `pending`, `fulfilled`, and `rejected` states        |
+| Harder to compose                   | Easy to compose with `Promise.all`, `Promise.race`, etc. |
 
 Callback example:
 
@@ -195,12 +195,12 @@ getUser(1)
 
 ## 7. Difference Between `Promise.all` and `Promise.allSettled`
 
-| Feature | `Promise.all` | `Promise.allSettled` |
-| --- | --- | --- |
-| Success behavior | Resolves when all promises resolve | Resolves after all promises finish |
+| Feature          | `Promise.all`                                | `Promise.allSettled`                                  |
+| ---------------- | -------------------------------------------- | ----------------------------------------------------- |
+| Success behavior | Resolves when all promises resolve           | Resolves after all promises finish                    |
 | Failure behavior | Rejects immediately when one promise rejects | Does not reject because of individual promise failure |
-| Result | Array of resolved values | Array of status objects |
-| Best use | All tasks are required to succeed | Need result of every task, success or failure |
+| Result           | Array of resolved values                     | Array of status objects                               |
+| Best use         | All tasks are required to succeed            | Need result of every task, success or failure         |
 
 Example using `Promise.all`:
 
@@ -210,7 +210,7 @@ Promise.all([getUser(), getOrders(), getPayments()])
     console.log(user, orders, payments);
   })
   .catch((error) => {
-    console.error('One request failed:', error);
+    console.error("One request failed:", error);
   });
 ```
 
@@ -219,10 +219,10 @@ Example using `Promise.allSettled`:
 ```js
 Promise.allSettled([getUser(), getOrders(), getPayments()]).then((results) => {
   results.forEach((result) => {
-    if (result.status === 'fulfilled') {
-      console.log('Success:', result.value);
+    if (result.status === "fulfilled") {
+      console.log("Success:", result.value);
     } else {
-      console.log('Failed:', result.reason);
+      console.log("Failed:", result.reason);
     }
   });
 });

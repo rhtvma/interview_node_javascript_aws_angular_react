@@ -1,36 +1,35 @@
-console.log("A")
-console.log("B")
+console.log("A");
+console.log("B");
 
 async function abc() {
-  return 1
+  return 1;
 }
-
 
 async function abc1() {
   return new Promise((resolve) => {
-    resolve(1)
-  })
+    resolve(1);
+  });
 }
 
+setTimeout(() => {
+  console.log("C");
+}, 0);
 
-setTimeout(() => { console.log("C") }, 0)
+abc().then(() => console.log("i am promise")); // Promises have higher priority than setTimeout(), setInterval(), etc.
+abc1().then(() => console.log("i am promise 2")); // Promises have higher priority than setTimeout(), setInterval(), etc.
 
-abc().then(() => console.log("i am promise")) // Promises have higher priority than setTimout(), setInterval() etc
-abc1().then(() => console.log("i am promise 2")) // Promises have higher priority than setTimout(), setInterval() etc
-
-console.log("E")
+console.log("E");
 
 /** OUTPUT
 A
 B
 E
 i am promise
+i am promise 2
 C
  */
 
-
 // LINK : https://app.eraser.io/workspace/ButKKPq0lWWtgr79Z2XG?origin=share   {rohit114355}
-
 
 /** 
 

@@ -6,26 +6,20 @@ function swap(arr, index1, index2) {
   arr[index2] = temp;
 }
 
-function bubbleSort() {
-  for (var i = 0; i <= array.length; i++) {
-    for (var j = 0; j <= array.length - i; j++) {
-      if (array[j] > array[j + 1]) {
-        swap(array, j, j + 1);
+// Bubble sort repeatedly swaps adjacent values when they are in the wrong order.
+// Time complexity: O(n^2), space complexity: O(1).
+function bubbleSort(arr) {
+  for (var i = 0; i < arr.length - 1; i++) {
+    for (var j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
       }
     }
   }
+
+  return arr;
 }
 
-bubbleSort();
-console.log(array)
+console.log(bubbleSort(array));
 
-
-for (let i = object; i < length; i++) {
-  for (let j = 0; j < length - i; j++) {
-    if (array[j] > array[j + 1]) {
-      let temp = array[j]
-      array[j] = array[j + 1]
-      array[j + 1] = array[j]
-    }
-  }
-}
+// Output: [3, 5, 8, 9, 18, 25, 32]
