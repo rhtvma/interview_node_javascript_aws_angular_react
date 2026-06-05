@@ -182,7 +182,22 @@ class Welcome extends Component {
 
 ### Controlled vs Uncontrolled Components
 
+**Definition:**
+- **Controlled Components**: Form elements whose values are controlled by React state. The component's state is the "single source of truth" for the input value.
+- **Uncontrolled Components**: Form elements that maintain their own internal state. React doesn't control the value; instead, you access it using refs when needed.
+
+**Key Differences:**
+| Aspect | Controlled | Uncontrolled |
+|--------|-----------|--------------|
+| **State Management** | React state controls value | DOM maintains its own state |
+| **Data Flow** | Explicit via onChange handlers | Implicit via DOM |
+| **Access Value** | From state variable | Using refs |
+| **Validation** | Real-time, on every change | On submit or when accessed |
+| **Use Case** | Forms with validation, dynamic inputs | Simple forms, file inputs |
+
 #### Controlled Components
+**When to use:** When you need real-time validation, conditional rendering, or dynamic form behavior.
+
 ```jsx
 function ControlledForm() {
   const [name, setName] = useState('');
@@ -210,6 +225,8 @@ function ControlledForm() {
 ```
 
 #### Uncontrolled Components
+**When to use:** For simple forms, file inputs (which are always uncontrolled), or when integrating with non-React code.
+
 ```jsx
 function UncontrolledForm() {
   const nameRef = useRef();
