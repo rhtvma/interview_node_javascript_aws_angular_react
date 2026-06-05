@@ -42,13 +42,14 @@ A comprehensive collection of interview preparation materials, code examples, an
 - [API Components](./topics/NodeJs/Components_of_API.md)
 - [Design Patterns](./topics/NodeJs/design_patterns.md)
 - [HTTP Methods](./topics/NodeJs/HTTP_methods.md)
-- [Node Cluster](./topics/NodeJs/node_cluster.js)
+- [Node Cluster](./topics/NodeJs/Cluster.js)
 - [Node.js Security](./topics/NodeJs/NodeJs_Security.md)
 - **[Event Loop](./topics/NodeJs/event_loop/)**
   - [Event Loop Code](./topics/NodeJs/event_loop/event_loop.js)
   - [Event Loop Diagram](./topics/NodeJs/event_loop/event_loop.png)
   - [Event Loop Animation](./topics/NodeJs/event_loop/EVENT_LOOP.gif)
 - **[Files & Streams](./topics/NodeJs/files_streams/)**
+  - [File Stream Concepts](./topics/NodeJs/files_streams/File_Stream_Concepts.md)
   - [Streams](./topics/NodeJs/files_streams/streams.js)
   - [Stream Pipeline](./topics/NodeJs/files_streams/stream_pipeline.js)
 - **[Promises](./topics/NodeJs/promise/)**
@@ -106,9 +107,12 @@ A comprehensive collection of interview preparation materials, code examples, an
 ### 🏗️ [System Design](./topics/System_Design/)
 - **[📘 System Design Concepts - Interview Ready](./topics/System_Design/System_Design_Concepts.md)**
 
-### 🐳 [Docker & Kubernetes](./topics/DOCKER-KUBERNETES/)
-- **[📘 Docker Concepts](./topics/DOCKER-KUBERNETES/Docker_Concepts.md)**
-- **[📘 Kubernetes Concepts](./topics/DOCKER-KUBERNETES/Kubernetes_Concepts.md)**
+### [Infrastructure](./topics/Infrastructure/)
+- **[Docker Concepts](./topics/Infrastructure/Docker_Concepts.md)**
+- **[Kubernetes Concepts](./topics/Infrastructure/Kubernetes_Concepts.md)**
+- **[RabbitMQ Concepts](./topics/Infrastructure/RabbitMQ_Concepts.md)**
+- **[Queue and Dequeue Concepts](./topics/Infrastructure/Queue_Dequeue_Concepts.md)**
+- **[Redis Concepts](./topics/Infrastructure/Redis_Concepts.md)**
 
 ### 🔀 [Git & NPM](./topics/GIT/)
 - **[📘 Git Concepts](./topics/GIT/Git_Concepts.md)**
@@ -180,7 +184,7 @@ node quick_run.js
 
 ### For Advanced
 9. **System Design** → [System Design Concepts](./topics/System_Design/System_Design_Concepts.md)
-10. **DevOps** → [Docker](./topics/DOCKER-KUBERNETES/Docker_Concepts.md) & [Kubernetes](./topics/DOCKER-KUBERNETES/Kubernetes_Concepts.md)
+10. **Infrastructure** → [Docker](./topics/Infrastructure/Docker_Concepts.md), [Kubernetes](./topics/Infrastructure/Kubernetes_Concepts.md), [RabbitMQ](./topics/Infrastructure/RabbitMQ_Concepts.md), [Queues](./topics/Infrastructure/Queue_Dequeue_Concepts.md) & [Redis](./topics/Infrastructure/Redis_Concepts.md)
 11. **Version Control** → [Git Concepts](./topics/GIT/Git_Concepts.md)
 12. **Interview Preparation** → [Company Interviews](./interviews/COMPANIES/)
 
@@ -197,7 +201,7 @@ node quick_run.js
 - [ ] Database queries (SQL & NoSQL)
 - [ ] API design (REST, GraphQL)
 - [ ] Cloud services (AWS)
-- [ ] DevOps basics (Docker, CI/CD)
+- [ ] Infrastructure basics (Docker, Kubernetes, queues, caching)
 
 ---
 
