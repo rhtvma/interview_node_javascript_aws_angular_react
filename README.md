@@ -65,7 +65,7 @@ A comprehensive collection of interview preparation materials, code examples, an
 ### ⚛️ [React](./topics/React/)
 - **[📘 React Concepts - Interview Ready](./topics/React/React_Concepts.md)**
 - [Hooks](./topics/React/Hooks.md)
-- **[Project: Tic-Tac-Toe Game](./topics/React/PROJECTS/my-tic-tac-toe-game/)**
+- **[Project: Tic-Tac-Toe Game](./topics/React/PROJECTS/React Interview App/)**
 
 ### ☁️ [AWS](./topics/AWS/)
 - **[📘 AWS Topics - Interview Ready](./topics/AWS/AWS_Topics.md)**

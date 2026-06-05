@@ -16,6 +16,16 @@
 
 ## Scalability
 
+**Description:** Scalability is the ability of a system to handle increased load by adding resources. It's fundamental to building systems that can grow with user demand. Understanding scalability trade-offs between vertical and horizontal scaling is crucial for system design interviews.
+
+**Key Concepts:**
+- Vertical scaling: Add more power to existing machines (scale up)
+- Horizontal scaling: Add more machines (scale out)
+- Stateless vs Stateful services
+- Key metrics: Throughput, latency, availability, consistency
+- Bottlenecks: Database, network, CPU, memory
+- Load testing: Identify scaling limits
+
 ### Vertical Scaling (Scale Up)
 - Adding more power (CPU, RAM) to existing machine
 - **Pros**: Simple, no code changes
@@ -38,6 +48,16 @@
 
 ## Load Balancing
 
+**Description:** Load balancers distribute incoming traffic across multiple servers to ensure no single server bears too much load. They improve availability, reliability, and performance. Understanding load balancing is essential for designing scalable distributed systems.
+
+**Key Concepts:**
+- Distributes traffic across multiple servers
+- Types: Hardware, Software, DNS-based
+- Algorithms: Round Robin, Least Connections, IP Hash, Weighted
+- Health checks: Monitor server availability
+- Session persistence: Sticky sessions for stateful apps
+- Layer 4 (Transport) vs Layer 7 (Application) load balancing
+
 ### Types of Load Balancers
 1. **Hardware Load Balancers**: F5, Citrix NetScaler
 2. **Software Load Balancers**: Nginx, HAProxy, AWS ELB
@@ -58,6 +78,16 @@
 ---
 
 ## Caching
+
+**Description:** Caching stores frequently accessed data in fast-access storage to reduce latency and database load. It's one of the most effective ways to improve system performance. Understanding caching strategies and eviction policies is crucial for optimizing applications.
+
+**Key Concepts:**
+- Multiple cache levels: Client, CDN, Application, Database
+- Caching strategies: Cache-Aside, Write-Through, Write-Behind, Refresh-Ahead
+- Eviction policies: LRU, LFU, FIFO, TTL
+- Cache invalidation: Time-based, Event-based, Manual
+- Cache hit ratio: Measure of cache effectiveness
+- Trade-offs: Stale data vs performance
 
 ### Cache Levels
 1. **Client-side**: Browser cache, localStorage
@@ -85,6 +115,16 @@
 ---
 
 ## Database Design
+
+**Description:** Database design involves choosing the right database type and optimizing its structure for your use case. SQL databases offer ACID guarantees and complex queries, while NoSQL databases provide flexibility and horizontal scalability. Understanding trade-offs is key to making informed decisions.
+
+**Key Concepts:**
+- SQL: ACID, structured data, complex queries, vertical scaling
+- NoSQL: Flexible schema, horizontal scaling, eventual consistency
+- Database optimization: Indexing, partitioning, replication, denormalization
+- Sharding: Distribute data across multiple databases
+- CAP theorem: Consistency, Availability, Partition tolerance
+- Read vs Write optimization
 
 ### SQL vs NoSQL
 
@@ -120,6 +160,16 @@
 
 ## Microservices Architecture
 
+**Description:** Microservices architecture breaks applications into small, independent services that communicate over networks. Each service is independently deployable and scalable. This approach enables faster development, better fault isolation, and technology flexibility, but adds complexity in deployment and monitoring.
+
+**Key Concepts:**
+- Single responsibility: Each service does one thing well
+- Independent deployment and scaling
+- Decentralized data management
+- Communication: Synchronous (REST, gRPC) vs Asynchronous (Message queues)
+- Challenges: Distributed transactions, service discovery, monitoring
+- Patterns: API Gateway, Service Mesh, Circuit Breaker, Saga
+
 ### Characteristics
 - **Single Responsibility**: Each service does one thing
 - **Independently Deployable**: Deploy without affecting others
@@ -141,6 +191,16 @@
 ---
 
 ## API Design
+
+**Description:** API design defines how services communicate with each other and with clients. Well-designed APIs are intuitive, consistent, and versioned. REST is the most common, GraphQL offers flexibility, and gRPC provides high performance. Understanding API design principles is crucial for building maintainable systems.
+
+**Key Concepts:**
+- REST: Resource-based, HTTP methods, stateless
+- GraphQL: Single endpoint, flexible queries, no over-fetching
+- gRPC: Binary protocol, high performance, streaming support
+- Best practices: Versioning, pagination, error handling, documentation
+- Security: Authentication, authorization, rate limiting
+- API Gateway: Single entry point, routing, authentication
 
 ### REST API Best Practices
 - **Resource-based URLs**: `/users`, `/orders`
@@ -167,6 +227,16 @@
 
 ## Message Queues
 
+**Description:** Message queues enable asynchronous communication between services by storing messages until they're processed. They decouple services, improve reliability, and handle traffic spikes. Understanding message queues is essential for building resilient distributed systems.
+
+**Key Concepts:**
+- Asynchronous communication between services
+- Patterns: Point-to-Point, Publish-Subscribe, Request-Reply
+- Benefits: Decoupling, load leveling, reliability, scalability
+- Popular solutions: RabbitMQ, Kafka, AWS SQS/SNS, Redis Pub/Sub
+- Message persistence and delivery guarantees
+- Dead letter queues for failed messages
+
 ### Popular Solutions
 - **RabbitMQ**: AMQP protocol, complex routing
 - **Apache Kafka**: High throughput, event streaming
@@ -188,6 +258,16 @@
 ---
 
 ## CAP Theorem
+
+**Description:** CAP Theorem states that distributed systems can only guarantee two of three properties: Consistency, Availability, and Partition Tolerance. Since network partitions are inevitable, systems must choose between consistency and availability. Understanding CAP helps make informed database and architecture decisions.
+
+**Key Concepts:**
+- Consistency: All nodes see same data simultaneously
+- Availability: Every request gets a response
+- Partition Tolerance: System works despite network failures
+- Trade-offs: CP (MongoDB, HBase) vs AP (Cassandra, DynamoDB)
+- In practice: Choose based on business requirements
+- PACELC: Extension considering latency and consistency
 
 **You can only guarantee 2 out of 3:**
 
@@ -212,6 +292,16 @@
 
 ## Distributed Systems
 
+**Description:** Distributed systems consist of multiple computers working together as a single system. They provide scalability and fault tolerance but introduce complexity in coordination, consistency, and failure handling. Understanding distributed systems concepts is crucial for designing large-scale applications.
+
+**Key Concepts:**
+- Consensus algorithms: Paxos, Raft for agreement
+- Distributed transactions: 2PC, Saga pattern, Event Sourcing
+- Challenges: Network latency, partial failures, clock synchronization
+- Consistency models: Strong, eventual, causal consistency
+- Replication: Master-slave, multi-master
+- Distributed locks and coordination
+
 ### Consensus Algorithms
 - **Paxos**: Complex, proven
 - **Raft**: Simpler, understandable
@@ -231,6 +321,14 @@
 ---
 
 ## System Design Patterns
+
+**Description**: System design patterns are proven solutions to common architectural challenges in distributed systems. These patterns help build resilient, scalable, and maintainable systems by addressing specific problems like failure handling, resource management, and data consistency. Understanding these patterns is crucial for designing robust production systems.
+
+**Key Concepts**:
+- **Resilience Patterns**: Circuit breaker, bulkhead, retry mechanisms
+- **Rate Control**: Token bucket, leaky bucket, sliding window algorithms
+- **Data Patterns**: CQRS, event sourcing, saga pattern
+- **Failure Handling**: Graceful degradation, fallback strategies
 
 ### Circuit Breaker
 - Prevent cascading failures
@@ -263,6 +361,14 @@
 ---
 
 ## Common System Design Interview Questions
+
+**Description**: System design interviews assess your ability to design large-scale distributed systems. These questions test your understanding of scalability, reliability, performance optimization, and trade-offs. Common scenarios include designing popular services like URL shorteners, social media platforms, and streaming services.
+
+**Key Concepts**:
+- **Requirements Analysis**: Functional and non-functional requirements
+- **Scale Estimation**: Users, requests, storage, bandwidth calculations
+- **Component Design**: Services, databases, caches, load balancers
+- **Trade-offs**: Consistency vs availability, latency vs throughput
 
 ### Design URL Shortener (bit.ly)
 - **Requirements**: Shorten URL, redirect, analytics
@@ -298,6 +404,14 @@
 
 ## Interview Approach
 
+**Description**: A structured approach to system design interviews helps you communicate effectively and demonstrate your problem-solving skills. This framework ensures you cover all important aspects of system design while managing time efficiently during the interview.
+
+**Key Concepts**:
+- **Clarification**: Understand requirements and constraints
+- **Estimation**: Calculate scale and capacity needs
+- **Design**: Create high-level architecture and detailed components
+- **Discussion**: Address bottlenecks, trade-offs, and improvements
+
 ### 1. Requirements Clarification (5 min)
 - Functional requirements
 - Non-functional requirements (scale, performance)
@@ -327,6 +441,14 @@
 ---
 
 ## Key Metrics to Remember
+
+**Description**: Understanding key performance metrics and latency numbers is essential for making informed design decisions. These numbers help you estimate system capacity, identify bottlenecks, and choose appropriate technologies for your architecture.
+
+**Key Concepts**:
+- **Latency Hierarchy**: From nanoseconds (cache) to milliseconds (network)
+- **Availability Targets**: SLA requirements and downtime calculations
+- **Scale Estimates**: Request rates, storage needs, bandwidth requirements
+- **Use Cases**: Capacity planning, performance optimization, technology selection
 
 ### Latency Numbers
 - L1 cache: 0.5 ns

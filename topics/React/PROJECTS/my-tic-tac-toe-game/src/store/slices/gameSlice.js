@@ -1,0 +1,257 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+/**
+ * GAME SLICE - Interview Topic: Redux Toolkit Slices
+ * 
+ * Purpose: Manages tic-tac-toe game state using Redux
+ * Interview Points:
+ * 1. createSlice - Combines reducers and actions
+ * 2. Immer integration - Write "mutating" code safely
+ * 3. Action creators - Automatically generated
+ * 4. Reducer logic - Pure functions
+ * 5. State shape design
+ */
+
+/**
+ * Initial State
+ * Interview: Explain state structure design
+ */
+const initialState = {
+    board: Array(9).fill(null),  // 3x3 board represented as array
+    currentPlayer: 'X',           // Current player ('X' or 'O')
+    winner: null,                 // Winner ('X', 'O', or 'draw')
+    gameOver: false,              // Game status
+    scores: {                     // Score tracking
+        X: 0,
+        O: 0,
+        draws: 0
+    },
+    history: [],                  // Move history for undo
+    moveCount: 0                  // Number of moves made
+};
+
+/**
+ * Helper function to check winner
+ * Interview: Explain game logic and algorithms
+ */
+const checkWinner = (board) => {
+    // Winning combinations
+    const lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+        [0, 4, 8], [2, 4, 6]             // Diagonals
+    ];
+
+    for (let line of lines) {
+        const [a, b, c] = line;
+        if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            return board[a]; // Return winner ('X' or 'O')
+        }
+    }
+
+    // Check for draw
+    if (board.every(cell => cell !== null)) {
+        return 'draw';
+    }
+
+    return null; // Game continues
+};
+
+/**
+ * Game Slice
+ * Interview: Explain createSlice API
+ */
+const gameSlice = createSlice({
+    name: 'game',
+    initialState,
+
+    /**
+     * Reducers
+     * Interview: Explain reducer patterns and Immer
+     * 
+     * Note: Redux Toolkit uses Immer, so we can write "mutating" code
+     * that actually produces immutable updates
+     */
+    reducers: {
+        /**
+         * Make Move Action
+         * Interview: Explain action payload and state updates
+         */
+        makeMove: (state, action) => {
+            const index = action.payload;
+
+            // Validate move
+            if (state.board[index] || state.gameOver) {
+                return; // Invalid move, don't update state
+            }
+
+            // Save current state to history (for undo)
+            state.history.push({
+                board: [...state.board],
+                currentPlayer: state.currentPlayer,
+                moveCount: state.moveCount
+            });
+
+            // Make move - Interview: Explain immutable update with Immer
+            state.board[index] = state.currentPlayer;
+            state.moveCount += 1;
+
+            // Check for winner
+            const winner = checkWinner(state.board);
+
+            if (winner) {
+                state.winner = winner;
+                state.gameOver = true;
+
+                // Update scores
+                if (winner === 'draw') {
+                    state.scores.draws += 1;
+                } else {
+                    state.scores[winner] += 1;
+                }
+            } else {
+                // Switch player
+                state.currentPlayer = state.currentPlayer === 'X' ? 'O' : 'X';
+            }
+        },
+
+        /**
+         * Reset Game Action
+         * Interview: Explain state reset patterns
+         */
+        resetGame: (state) => {
+            state.board = Array(9).fill(null);
+            state.currentPlayer = 'X';
+            state.winner = null;
+            state.gameOver = false;
+            state.history = [];
+            state.moveCount = 0;
+            // Keep scores - Interview: Explain partial state reset
+        },
+
+        /**
+         * Reset Scores Action
+         */
+        resetScores: (state) => {
+            state.scores = {
+                X: 0,
+                O: 0,
+                draws: 0
+            };
+        },
+
+        /**
+         * Undo Move Action
+         * Interview: Explain undo/redo implementation
+         */
+        undoMove: (state) => {
+            if (state.history.length === 0) {
+                return; // Nothing to undo
+            }
+
+            // Get last state from history
+            const lastState = state.history.pop();
+
+            // Restore state
+            state.board = lastState.board;
+            state.currentPlayer = lastState.currentPlayer;
+            state.moveCount = lastState.moveCount;
+            state.winner = null;
+            state.gameOver = false;
+        },
+
+        /**
+         * Set Player Action
+         * Interview: Explain action with payload
+         */
+        setPlayer: (state, action) => {
+            if (!state.gameOver && state.moveCount === 0) {
+                state.currentPlayer = action.payload;
+            }
+        }
+    }
+});
+
+/**
+ * Export Actions
+ * Interview: Explain action creators (auto-generated by createSlice)
+ */
+export const {
+    makeMove,
+    resetGame,
+    resetScores,
+    undoMove,
+    setPlayer
+} = gameSlice.actions;
+
+/**
+ * Selectors
+ * Interview: Explain selector pattern for accessing state
+ * 
+ * Selectors encapsulate state shape and can be memoized
+ */
+export const selectBoard = (state) => state.game.board;
+export const selectCurrentPlayer = (state) => state.game.currentPlayer;
+export const selectWinner = (state) => state.game.winner;
+export const selectGameOver = (state) => state.game.gameOver;
+export const selectScores = (state) => state.game.scores;
+export const selectMoveCount = (state) => state.game.moveCount;
+export const selectCanUndo = (state) => state.game.history.length > 0;
+
+/**
+ * Export Reducer
+ * Interview: Explain reducer export for store configuration
+ */
+export default gameSlice.reducer;
+
+/**
+ * Interview Questions to Prepare:
+ *
+ * Q1: What is a Redux slice?
+ * A: A slice is a collection of Redux reducer logic and actions for a
+ *    single feature. createSlice() generates action creators and action
+ *    types automatically based on the reducers you define.
+ *
+ * Q2: How does Immer work in Redux Toolkit?
+ * A: Immer allows writing "mutating" code that produces immutable updates.
+ *    It creates a draft state that you can modify directly, then produces
+ *    a new immutable state. Makes reducers easier to write and read.
+ *
+ * Q3: What are selectors and why use them?
+ * A: Selectors are functions that extract specific pieces of state.
+ *    Benefits:
+ *    - Encapsulate state shape
+ *    - Can be memoized with reselect
+ *    - Easier to refactor state structure
+ *    - Reusable across components
+ *
+ * Q4: How do you handle complex state updates?
+ * A: - Break into smaller reducers (slices)
+ *    - Use helper functions for logic
+ *    - Keep reducers pure
+ *    - Use Immer for nested updates
+ *    - Consider normalizing state shape
+ *
+ * Q5: What is the difference between action and action creator?
+ * A: Action: Plain object with type and payload
+ *    Action Creator: Function that returns an action
+ *    Redux Toolkit generates action creators automatically
+ *
+ * Q6: How do you implement undo/redo?
+ * A: Store history of states, pop from history to undo,
+ *    push to future stack for redo. Consider memory usage
+ *    for large state or many steps.
+ *
+ * Q7: Should you put all state in Redux?
+ * A: No. Use Redux for:
+ *    - Shared state across components
+ *    - Complex state logic
+ *    - State that needs persistence
+ *
+ *    Use local state for:
+ *    - Form inputs
+ *    - UI state (modals, tooltips)
+ *    - Component-specific state
+ */
+
+// Made with ❤️ for Interview Preparation
