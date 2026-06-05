@@ -19,6 +19,16 @@
 
 ## Time & Space Complexity
 
+**Description:** Understanding time and space complexity is fundamental to writing efficient algorithms. Big O notation provides a standardized way to describe algorithm performance as input size grows. This knowledge is crucial for technical interviews and optimizing production code.
+
+**Key Concepts:**
+- Big O: Upper bound of algorithm performance
+- Common complexities: O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)
+- Time complexity: How runtime scales with input size
+- Space complexity: How memory usage scales with input size
+- Best, average, worst case scenarios
+- Trade-offs: Often optimize time at cost of space or vice versa
+
 ### Big O Notation
 Describes the upper bound of algorithm performance as input size grows.
 
@@ -107,6 +117,15 @@ function double(arr) {
 ---
 
 ## Arrays
+
+**Description:** Arrays are the most fundamental data structure, storing elements in contiguous memory locations. They provide constant-time access by index but can be expensive for insertions/deletions. Mastering array manipulation is essential for coding interviews.
+
+**Key Concepts:**
+- Random access: O(1) time complexity
+- Fixed size in some languages, dynamic in JavaScript
+- Common patterns: Two pointers, sliding window, prefix sum
+- Popular problems: Two Sum, Maximum Subarray, Rotate Array
+- Trade-offs: Fast access vs expensive insertions/deletions
 
 ### Common Operations
 ```javascript
@@ -280,6 +299,15 @@ function merge(nums1, m, nums2, n) {
 ---
 
 ## Strings
+
+**Description:** Strings are sequences of characters and one of the most common data types in programming. String manipulation problems test pattern recognition, character frequency counting, and substring operations. Understanding string algorithms is crucial for text processing and interviews.
+
+**Key Concepts:**
+- Immutable in many languages (creates new string on modification)
+- Common patterns: Two pointers, sliding window, hash maps
+- Character frequency: Use hash map or array (for ASCII)
+- Popular problems: Palindrome, Anagram, Longest Substring
+- String matching: KMP, Rabin-Karp algorithms
 
 ### Common Operations
 ```javascript
@@ -459,6 +487,16 @@ function myAtoi(s) {
 
 ## Linked Lists
 
+**Description:** Linked Lists are linear data structures where elements are stored in nodes, each pointing to the next node. Unlike arrays, they don't require contiguous memory and allow efficient insertions/deletions. Understanding pointer manipulation is key to mastering linked lists.
+
+**Key Concepts:**
+- Dynamic size: Grow/shrink as needed
+- No random access: Must traverse from head
+- Types: Singly, Doubly, Circular linked lists
+- Common patterns: Two pointers (fast/slow), dummy nodes
+- Popular problems: Reverse, Detect Cycle, Merge Lists
+- Trade-offs: Efficient insertions vs no random access
+
 ### Node Structure
 ```javascript
 class ListNode {
@@ -637,6 +675,15 @@ function middleNode(head) {
 ---
 
 ## Stacks & Queues
+
+**Description:** Stacks and Queues are fundamental linear data structures with specific access patterns. Stacks follow LIFO (Last In First Out) while Queues follow FIFO (First In First Out). They're essential for problems involving order, backtracking, and level-order processing.
+
+**Key Concepts:**
+- Stack: LIFO - push/pop from same end
+- Queue: FIFO - enqueue at rear, dequeue from front
+- Common uses: Function calls, undo/redo, BFS, expression evaluation
+- Popular problems: Valid Parentheses, Min Stack, Queue using Stacks
+- Implementation: Arrays or linked lists
 
 ### Stack Implementation
 ```javascript
@@ -840,6 +887,16 @@ class MyQueue {
 
 ## Hash Tables
 
+**Description:** Hash Tables (Hash Maps) provide average O(1) time complexity for insertions, deletions, and lookups. They use a hash function to map keys to array indices. Understanding hash tables is crucial for optimizing algorithms that require frequent lookups.
+
+**Key Concepts:**
+- Average O(1) for insert, delete, search
+- Hash function: Converts key to array index
+- Collision handling: Chaining or open addressing
+- Load factor: Ratio of elements to buckets
+- Popular problems: Two Sum, Anagram detection, Frequency counting
+- JavaScript: Map, Set, Object
+
 ### Implementation
 ```javascript
 class HashTable {
@@ -973,6 +1030,16 @@ function longestConsecutive(nums) {
 ---
 
 ## Trees
+
+**Description:** Trees are hierarchical data structures with a root node and child nodes. Binary trees have at most two children per node. Trees are fundamental for representing hierarchical relationships and enable efficient searching, sorting, and hierarchical data storage.
+
+**Key Concepts:**
+- Binary Tree: At most 2 children per node
+- Binary Search Tree (BST): Left < Root < Right
+- Traversals: Inorder, Preorder, Postorder, Level-order
+- Height: Longest path from root to leaf
+- Popular problems: Max Depth, Validate BST, LCA, Symmetric Tree
+- Balanced trees: AVL, Red-Black for O(log n) operations
 
 ### Binary Tree Node
 ```javascript
@@ -1232,6 +1299,16 @@ function rightSideView(root) {
 
 ## Graphs
 
+**Description:** Graphs are versatile data structures representing relationships between entities. They consist of vertices (nodes) and edges (connections). Graphs model real-world problems like social networks, maps, and dependencies. Understanding graph traversal and algorithms is essential for complex problem-solving.
+
+**Key Concepts:**
+- Vertices (nodes) and Edges (connections)
+- Directed vs Undirected graphs
+- Weighted vs Unweighted graphs
+- Representations: Adjacency List, Adjacency Matrix
+- Traversals: DFS (depth-first), BFS (breadth-first)
+- Popular problems: Islands, Clone Graph, Cycle Detection, Shortest Path
+
 ### Graph Representations
 
 #### Adjacency List
@@ -1461,6 +1538,16 @@ function canFinish(numCourses, prerequisites) {
 
 ## Sorting Algorithms
 
+**Description:** Sorting algorithms arrange elements in a specific order (ascending/descending). Different algorithms have different time/space complexities and use cases. Understanding sorting is fundamental for optimizing data processing and is frequently tested in interviews.
+
+**Key Concepts:**
+- Comparison-based: Bubble, Selection, Insertion, Merge, Quick
+- Non-comparison: Counting, Radix, Bucket sort
+- Stable vs Unstable sorting
+- In-place vs Out-of-place sorting
+- Time complexities: O(n²) for simple sorts, O(n log n) for efficient sorts
+- Quick Sort: Fast average case, Merge Sort: Guaranteed O(n log n)
+
 ### 1. Bubble Sort
 ```javascript
 function bubbleSort(arr) {
@@ -1574,6 +1661,15 @@ function partition(arr, left, right) {
 
 ## Searching Algorithms
 
+**Description:** Searching algorithms find elements in data structures. Linear search works on unsorted data but is slow. Binary search is much faster but requires sorted data. Understanding search algorithms is crucial for optimizing data retrieval operations.
+
+**Key Concepts:**
+- Linear Search: O(n) - works on unsorted data
+- Binary Search: O(log n) - requires sorted data
+- Binary search principle: Divide and conquer
+- Applications: Finding elements, finding boundaries, optimization problems
+- Variants: Lower bound, upper bound, rotated arrays
+
 ### 1. Linear Search
 ```javascript
 function linearSearch(arr, target) {
@@ -1623,6 +1719,16 @@ function binarySearchRecursive(arr, target, left = 0, right = arr.length - 1) {
 ---
 
 ## Dynamic Programming
+
+**Description:** Dynamic Programming (DP) solves complex problems by breaking them into simpler subproblems and storing results to avoid redundant calculations. DP is powerful for optimization problems and is a common interview topic requiring practice to master.
+
+**Key Concepts:**
+- Memoization (top-down): Cache recursive results
+- Tabulation (bottom-up): Build solution iteratively
+- Overlapping subproblems: Same subproblems solved multiple times
+- Optimal substructure: Optimal solution contains optimal subsolutions
+- Popular problems: Fibonacci, Climbing Stairs, Coin Change, Knapsack
+- State definition: Key to solving DP problems
 
 ### 1. Fibonacci (Memoization)
 ```javascript
@@ -1715,6 +1821,16 @@ function rob(nums) {
 
 ## Recursion
 
+**Description:** Recursion is a programming technique where a function calls itself to solve smaller instances of the same problem. It's elegant for problems with recursive structure like trees, graphs, and divide-and-conquer algorithms. Understanding recursion is fundamental for advanced problem-solving.
+
+**Key Concepts:**
+- Base case: Stopping condition to prevent infinite recursion
+- Recursive case: Function calls itself with modified parameters
+- Call stack: Each recursive call uses stack memory
+- Stack overflow: Too many recursive calls
+- Tail recursion: Optimization where recursive call is last operation
+- Common uses: Tree traversal, backtracking, divide and conquer
+
 ### Key Concepts
 1. **Base Case**: Condition to stop recursion
 2. **Recursive Case**: Function calls itself
@@ -1764,6 +1880,17 @@ function flatten(arr) {
 ---
 
 ## Problem-Solving Patterns
+
+**Description:** Problem-solving patterns are reusable strategies for tackling common algorithm challenges. Recognizing these patterns helps quickly identify solution approaches. Mastering these patterns significantly improves problem-solving speed in interviews.
+
+**Key Patterns:**
+- **Two Pointers**: Use two indices moving toward/away from each other
+- **Sliding Window**: Maintain a window of elements for subarray problems
+- **Frequency Counter**: Use hash maps to count occurrences
+- **Divide and Conquer**: Break problem into smaller subproblems
+- **Backtracking**: Try all possibilities, backtrack on failure
+- **Greedy**: Make locally optimal choices
+- **Fast & Slow Pointers**: Detect cycles, find middle
 
 ### 1. Two Pointers
 ```javascript
