@@ -206,4 +206,4 @@ export const AuthProvider = ({ children }) => {
  *    - Logout on suspicious activity
  */
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

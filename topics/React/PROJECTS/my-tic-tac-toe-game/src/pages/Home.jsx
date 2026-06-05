@@ -1,22 +1,37 @@
-import { Link } from 'react-router-dom';
+import { useCallback } from 'react';
 import { useTheme } from '../hooks/useTheme';
 import { useAuth } from '../hooks/useAuth';
+import FeatureCard from '../components/home/FeatureCard';
+import TopicCard from '../components/home/TopicCard';
+import StatCard from '../components/home/StatCard';
+import WelcomeCard from '../components/home/WelcomeCard';
+import { FEATURES, AUTH_FEATURE, TOPICS, STATS } from '../data/homeData';
 
 /**
  * HOME PAGE COMPONENT - Modern Tile-Based Layout
  * Interview Topic: Component Composition, Context Usage, Tailwind CSS
- * 
+ *
  * Features:
  * - Responsive grid layout
  * - Gradient backgrounds
  * - Hover animations
  * - Dark mode support
  * - Icon integration
+ * - Data-driven components
+ * - Performance optimizations
  */
 
 function Home() {
   const { theme, toggleTheme, isDark } = useTheme();
   const { user, isAuthenticated } = useAuth();
+
+  // Memoize theme toggle handler to prevent unnecessary re-renders
+  const handleToggleTheme = useCallback(() => {
+    toggleTheme();
+  }, [toggleTheme]);
+
+  // Get the appropriate auth feature based on authentication status
+  const authFeature = isAuthenticated ? AUTH_FEATURE.authenticated : AUTH_FEATURE.unauthenticated;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 transition-colors duration-300">
@@ -34,7 +49,7 @@ function Home() {
           </div>
           
           <button
-            onClick={toggleTheme}
+            onClick={handleToggleTheme}
             className="p-4 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
             aria-label="Toggle theme"
           >
@@ -45,27 +60,7 @@ function Home() {
         </div>
 
         {/* Welcome Card */}
-        <div className="mb-12 p-8 rounded-2xl bg-white dark:bg-gray-800 shadow-xl border-l-4 border-purple-500 animate-fadeIn">
-          {isAuthenticated ? (
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
-                Welcome back, {user?.name || user?.email}! 👋
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300">
-                Continue your React learning journey
-              </p>
-            </div>
-          ) : (
-            <div>
-              <h2 className="text-3xl font-bold text-gray-800 dark:text-white mb-2">
-                Welcome to React Learning Hub! 🚀
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300">
-                Login to unlock all features and track your progress
-              </p>
-            </div>
-          )}
-        </div>
+        <WelcomeCard isAuthenticated={isAuthenticated} user={user} />
 
         {/* Feature Cards Grid */}
         <div className="mb-12">
@@ -73,91 +68,10 @@ function Home() {
             🎯 Explore Features
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Game Card */}
-            <Link to="/game" className="group">
-              <div className="h-full p-6 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  🎮
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Tic-Tac-Toe</h3>
-                <p className="text-blue-100 mb-4">
-                  Redux state management with game logic
-                </p>
-                <div className="flex items-center text-sm font-semibold">
-                  <span>Play Now</span>
-                  <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Hooks Card */}
-            <Link to="/hooks" className="group">
-              <div className="h-full p-6 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  🪝
-                </div>
-                <h3 className="text-2xl font-bold mb-2">React Hooks</h3>
-                <p className="text-purple-100 mb-4">
-                  All hooks with practical examples
-                </p>
-                <div className="flex items-center text-sm font-semibold">
-                  <span>Explore Hooks</span>
-                  <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Forms Card */}
-            <Link to="/forms" className="group">
-              <div className="h-full p-6 rounded-xl bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  📝
-                </div>
-                <h3 className="text-2xl font-bold mb-2">Forms Demo</h3>
-                <p className="text-pink-100 mb-4">
-                  Controlled & uncontrolled components
-                </p>
-                <div className="flex items-center text-sm font-semibold">
-                  <span>Try Forms</span>
-                  <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
-                </div>
-              </div>
-            </Link>
-
-            {/* Dashboard/Login Card */}
-            {isAuthenticated ? (
-              <Link to="/dashboard" className="group">
-                <div className="h-full p-6 rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    📊
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Dashboard</h3>
-                  <p className="text-green-100 mb-4">
-                    Protected route with user data
-                  </p>
-                  <div className="flex items-center text-sm font-semibold">
-                    <span>View Dashboard</span>
-                    <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
-                  </div>
-                </div>
-              </Link>
-            ) : (
-              <Link to="/login" className="group">
-                <div className="h-full p-6 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300">
-                  <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                    🔐
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">Login</h3>
-                  <p className="text-orange-100 mb-4">
-                    Authentication & protected routes
-                  </p>
-                  <div className="flex items-center text-sm font-semibold">
-                    <span>Login Now</span>
-                    <span className="ml-2 group-hover:translate-x-2 transition-transform duration-300">→</span>
-                  </div>
-                </div>
-              </Link>
-            )}
+            {FEATURES.map((feature) => (
+              <FeatureCard key={feature.to} {...feature} />
+            ))}
+            <FeatureCard {...authFeature} />
           </div>
         </div>
 
@@ -167,161 +81,9 @@ function Home() {
             📚 Interview Topics Covered
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* State Management */}
-            <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-blue-500">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">🔄</span>
-                State Management
-              </h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>useState & useReducer</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>Context API patterns</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>Redux Toolkit integration</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-blue-500 mr-2">✓</span>
-                  <span>State persistence</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* React Hooks */}
-            <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-purple-500">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">🪝</span>
-                React Hooks
-              </h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-purple-500 mr-2">✓</span>
-                  <span>All built-in hooks</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-500 mr-2">✓</span>
-                  <span>Custom hooks creation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-500 mr-2">✓</span>
-                  <span>Hook rules & best practices</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-purple-500 mr-2">✓</span>
-                  <span>Performance optimization</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Routing */}
-            <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-pink-500">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">🛣️</span>
-                Routing
-              </h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-pink-500 mr-2">✓</span>
-                  <span>React Router v6</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-pink-500 mr-2">✓</span>
-                  <span>Protected routes</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-pink-500 mr-2">✓</span>
-                  <span>Navigation patterns</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-pink-500 mr-2">✓</span>
-                  <span>Dynamic routing</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Performance */}
-            <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-green-500">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">⚡</span>
-                Performance
-              </h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>React.memo usage</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>useMemo & useCallback</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Code splitting</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-green-500 mr-2">✓</span>
-                  <span>Lazy loading</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Forms */}
-            <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-yellow-500">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">📋</span>
-                Forms
-              </h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">✓</span>
-                  <span>Controlled components</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">✓</span>
-                  <span>Uncontrolled components</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">✓</span>
-                  <span>Form validation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">✓</span>
-                  <span>Debouncing techniques</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Authentication */}
-            <div className="p-6 rounded-xl bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-red-500">
-              <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-4 flex items-center">
-                <span className="text-2xl mr-3">🔒</span>
-                Authentication
-              </h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">✓</span>
-                  <span>Login/Logout flow</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">✓</span>
-                  <span>Token management</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">✓</span>
-                  <span>Route protection</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-red-500 mr-2">✓</span>
-                  <span>Session handling</span>
-                </li>
-              </ul>
-            </div>
+            {TOPICS.map((topic) => (
+              <TopicCard key={topic.title} {...topic} />
+            ))}
           </div>
         </div>
 
@@ -331,22 +93,9 @@ function Home() {
             📈 Learning Stats
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="p-6 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-lg">
-              <div className="text-4xl font-bold mb-2">15+</div>
-              <div className="text-blue-100">React Hooks</div>
-            </div>
-            <div className="p-6 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 text-white shadow-lg">
-              <div className="text-4xl font-bold mb-2">50+</div>
-              <div className="text-purple-100">Code Examples</div>
-            </div>
-            <div className="p-6 rounded-xl bg-gradient-to-br from-pink-500 to-pink-600 text-white shadow-lg">
-              <div className="text-4xl font-bold mb-2">100+</div>
-              <div className="text-pink-100">Interview Questions</div>
-            </div>
-            <div className="p-6 rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white shadow-lg">
-              <div className="text-4xl font-bold mb-2">10+</div>
-              <div className="text-green-100">Topics Covered</div>
-            </div>
+            {STATS.map((stat) => (
+              <StatCard key={stat.label} {...stat} />
+            ))}
           </div>
         </div>
 
@@ -403,4 +152,4 @@ export default Home;
  *    - Efficient event handlers
  */
 
-// Made with Bob ✨
+// Made with ❤️ for Interview Preparation ✨

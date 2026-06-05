@@ -6,4 +6,4 @@ import { createContext } from 'react';
  */
 export const AuthContext = createContext(undefined);
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

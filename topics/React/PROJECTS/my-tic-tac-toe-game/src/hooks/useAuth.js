@@ -18,4 +18,4 @@ export const useAuth = () => {
     return context;
 };
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

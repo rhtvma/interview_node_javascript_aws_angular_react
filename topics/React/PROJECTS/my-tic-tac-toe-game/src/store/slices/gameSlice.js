@@ -254,4 +254,4 @@ export default gameSlice.reducer;
  *    - Component-specific state
  */
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

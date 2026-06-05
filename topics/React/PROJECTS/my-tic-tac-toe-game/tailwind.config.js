@@ -47,4 +47,4 @@ export default {
     darkMode: 'class',
 }
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

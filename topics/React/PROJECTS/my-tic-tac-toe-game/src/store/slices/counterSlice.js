@@ -252,4 +252,4 @@ export default counterSlice.reducer;
  *    Improves perceived performance
  */
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

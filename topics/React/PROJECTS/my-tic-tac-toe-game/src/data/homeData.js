@@ -152,4 +152,4 @@ export const STATS = [
   },
 ];
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

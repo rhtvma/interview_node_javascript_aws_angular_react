@@ -5,4 +5,4 @@ export default {
   },
 }
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation

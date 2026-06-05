@@ -20,4 +20,4 @@ export const useTheme = () => {
     return context;
 };
 
-// Made with Bob
+// Made with ❤️ for Interview Preparation
