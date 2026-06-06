@@ -3,10 +3,23 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /**
- * FEATURE CARD COMPONENT
- * Reusable card for displaying feature links with gradient backgrounds
- * 
- * Interview Topics: Component Composition, Props, React.memo
+ * FEATURE CARD COMPONENT - Interview Topic: Reusable Navigation Cards
+ *
+ * Purpose: Render a feature card link with icon, copy, and action text.
+ * Interview Points:
+ * - Reusable UI card patterns
+ * - Link-driven navigation components
+ * - Prop-based appearance and behavior
+ *
+ * Interview Questions to Prepare:
+ * Q1: How do you design a reusable link card component?
+ * A: Accept content, destination, and styling props so it can be reused across screens.
+ *
+ * Q2: Why use React.memo for a feature card?
+ * A: To reduce re-renders when parent state changes but props remain the same.
+ *
+ * Q3: What is the benefit of separating presentation and navigation?
+ * A: It keeps the component focused and easier to maintain or test.
  */
 
 const FeatureCard = memo(({ to, icon, title, description, gradient, actionText }) => {

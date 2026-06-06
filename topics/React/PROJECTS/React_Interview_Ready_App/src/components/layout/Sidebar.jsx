@@ -1,3 +1,23 @@
+/**
+ * SIDEBAR COMPONENT - Interview Topic: Navigation & UI Patterns
+ *
+ * Purpose: Displays navigation links and theme/auth controls for the app.
+ * Interview Points:
+ * - Responsive sidebar behavior
+ * - Conditional navigation based on auth state
+ * - Theme toggle and mobile menu handling
+ * - Separation of concerns in layout components
+ *
+ * Interview Questions to Prepare:
+ * Q1: How do you conditionally render menu items for authenticated users?
+ * A: Filter navigation items by auth state and render only allowed links.
+ *
+ * Q2: Why keep sidebar state local in the component?
+ * A: Local UI state (collapsed/open) is specific to layout and should not pollute global state.
+ *
+ * Q3: What is a good pattern for mobile navigation in React?
+ * A: Use a local open/close state, overlay backdrop, and responsive CSS classes.
+ */
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';

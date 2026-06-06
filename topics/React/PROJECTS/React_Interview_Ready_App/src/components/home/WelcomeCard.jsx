@@ -2,10 +2,23 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * WELCOME CARD COMPONENT
- * Displays personalized welcome message based on authentication status
- * 
- * Interview Topics: Conditional Rendering, Props, React.memo
+ * WELCOME CARD COMPONENT - Interview Topic: Component Rendering
+ *
+ * Purpose: Display a personalized welcome message depending on auth state.
+ * Interview Points:
+ * - Conditional rendering patterns
+ * - Prop-driven UI variations
+ * - Performance optimization with React.memo
+ *
+ * Interview Questions to Prepare:
+ * Q1: When should you use React.memo?
+ * A: When a component renders the same output for the same props and can avoid unnecessary updates.
+ *
+ * Q2: How do you render different UI for authenticated vs guest users?
+ * A: Use conditional expressions that choose alternate content based on auth props.
+ *
+ * Q3: Why include PropTypes for presentation components?
+ * A: To document expected props and catch incorrect usage during development.
  */
 
 const WelcomeCard = memo(({ isAuthenticated, user }) => {

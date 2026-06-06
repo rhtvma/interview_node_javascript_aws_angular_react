@@ -1,3 +1,22 @@
+/**
+ * INTERVIEW QUESTION SET COMPONENT - Interview Topic: Reusable Interview Content
+ *
+ * Purpose: Render beginner and advanced interview question sets in a reusable card layout.
+ * Interview Points:
+ * - Component composition and props validation
+ * - Rendering lists with unique keys
+ * - Presenting structured interview content consistently
+ *
+ * Interview Questions to Prepare:
+ * Q1: Why validate prop types in a reusable component?
+ * A: It helps catch incorrect prop shapes early and documents expected data.
+ *
+ * Q2: How should you choose keys for list rendering?
+ * A: Use stable, unique values like IDs or question text when available.
+ *
+ * Q3: What makes a component reusable?
+ * A: Clear props API, minimal assumptions about data, and consistent styling.
+ */
 import PropTypes from 'prop-types';
 
 function InterviewQuestionSet({ title, description, beginner, advanced }) {

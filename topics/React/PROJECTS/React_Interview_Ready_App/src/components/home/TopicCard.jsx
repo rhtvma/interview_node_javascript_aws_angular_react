@@ -2,10 +2,23 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 
 /**
- * TOPIC CARD COMPONENT
- * Reusable card for displaying interview topics with checklist items
- * 
- * Interview Topics: Component Composition, Props, React.memo, Array Mapping
+ * TOPIC CARD COMPONENT - Interview Topic: Reusable Cards
+ *
+ * Purpose: Render a topic card with a title, icon, and checklist items.
+ * Interview Points:
+ * - Component composition and props structure
+ * - Array mapping for lists
+ * - Reusability with styling variants
+ *
+ * Interview Questions to Prepare:
+ * Q1: What are the benefits of reusable card components?
+ * A: They reduce duplication, simplify layout changes, and keep UI consistent.
+ *
+ * Q2: How do you handle dynamic list rendering in React?
+ * A: Map over arrays and use stable keys for each element.
+ *
+ * Q3: Why pass style classes as props?
+ * A: It lets the parent control visual variants without hard-coding styles.
  */
 
 const TopicCard = memo(({ icon, title, items, borderColor, checkColor }) => {
