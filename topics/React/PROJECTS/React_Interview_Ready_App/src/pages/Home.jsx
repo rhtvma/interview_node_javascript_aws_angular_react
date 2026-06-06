@@ -1,3 +1,22 @@
+/**
+ * HOME PAGE - Interview Topic: React Overview
+ *
+ * Purpose: Summary dashboard for core React topics and candidate practice.
+ * Interview Points:
+ * - React architecture and core concepts
+ * - Topic selection and interview question mapping
+ * - Using reusable components and navigation
+ *
+ * Interview Questions to Prepare:
+ * Q1: What are the most important React concepts to review before an interview?
+ * A: JSX, state, props, component lifecycle, hooks, context, routing, and performance.
+ *
+ * Q2: How do you make a reusable page component?
+ * A: Keep logic modular, separate data from presentation, and pass props to child components.
+ *
+ * Q3: What is the role of a “topic map” in an interview prep app?
+ * A: It helps organize content by concept so candidates can focus on discrete areas.
+ */
 import { useState } from 'react';
 
 /**

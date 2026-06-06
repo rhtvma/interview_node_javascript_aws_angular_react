@@ -1,3 +1,22 @@
+/**
+ * LOGIN PAGE - Interview Topic: Authentication Flow
+ *
+ * Purpose: Simple login flow for route protection and demo auth state.
+ * Interview Points:
+ * - Form handling and async login
+ * - Redirect after login
+ * - Protected route user flow
+ *
+ * Interview Questions to Prepare:
+ * Q1: What is the typical client-side auth flow?
+ * A: Collect credentials, validate, store session state, and protect routes/components.
+ *
+ * Q2: Why use location.state.from for redirects?
+ * A: To return users to their intended destination after authentication.
+ *
+ * Q3: What should you do after a failed login attempt?
+ * A: Clear loading state, show a user-friendly error, and avoid side effects.
+ */
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';

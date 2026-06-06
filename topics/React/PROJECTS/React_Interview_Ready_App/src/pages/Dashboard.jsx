@@ -1,3 +1,22 @@
+/**
+ * DASHBOARD PAGE - Interview Topic: Protected Routes and State
+ *
+ * Purpose: Authenticated dashboard showing user progress and links to examples.
+ * Interview Points:
+ * - Protected route behavior
+ * - AuthContext usage and redirect handling
+ * - UI state and user session handling
+ *
+ * Interview Questions to Prepare:
+ * Q1: What is a protected route in React Router?
+ * A: A route that checks auth state before rendering and redirects unauthorized users.
+ *
+ * Q2: Why separate auth state from UI state?
+ * A: To keep security logic isolated and make components easier to test.
+ *
+ * Q3: What is the difference between client-side and server-side auth checks?
+ * A: Client-side checks guard UI access, while server-side checks protect real data.
+ */
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 

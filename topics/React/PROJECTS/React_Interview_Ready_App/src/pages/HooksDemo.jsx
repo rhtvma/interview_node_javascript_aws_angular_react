@@ -1,3 +1,22 @@
+/**
+ * HOOKS DEMO PAGE - Interview Topic: React Hooks
+ *
+ * Purpose: Demonstrate built-in hooks, custom hooks, and Redux hooks in one page.
+ * Interview Points:
+ * - useState, useEffect, useReducer, useCallback, useMemo
+ * - useRef and useLayoutEffect
+ * - Custom hooks and Redux state hooks
+ *
+ * Interview Questions to Prepare:
+ * Q1: When should you use useReducer instead of useState?
+ * A: When state logic is complex, actions are related, or updates follow a reducer pattern.
+ *
+ * Q2: How does useMemo improve performance?
+ * A: It memoizes expensive computations and avoids recomputing them on every render.
+ *
+ * Q3: Why must effect dependencies be accurate?
+ * A: Incorrect dependencies can cause stale values or unwanted reruns.
+ */
 import { useState, useEffect, useReducer, useCallback, useMemo, useRef, useLayoutEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, incrementAsync } from '../store/slices/counterSlice';

@@ -1,3 +1,22 @@
+/**
+ * FORMS PAGE - Interview Topic: React Forms
+ *
+ * Purpose: Compare controlled and uncontrolled form patterns with validation examples.
+ * Interview Points:
+ * - Controlled vs uncontrolled components
+ * - Validation, refs, and useDebounce
+ * - Form submission and error handling
+ *
+ * Interview Questions to Prepare:
+ * Q1: What is a controlled component in React?
+ * A: An input element whose value is driven by React state.
+ *
+ * Q2: When would you use refs for form values?
+ * A: For uncontrolled inputs or when you need direct DOM access without state updates.
+ *
+ * Q3: How do you validate form input in a React app?
+ * A: Validate on change or submit, store errors in state, and render messages conditionally.
+ */
 import { useState, useRef } from 'react';
 import useDebounce from '../hooks/useDebounce';
 

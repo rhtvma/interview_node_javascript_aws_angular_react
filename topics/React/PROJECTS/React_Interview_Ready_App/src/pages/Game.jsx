@@ -1,3 +1,22 @@
+/**
+ * GAME PAGE - Interview Topic: Redux State Management
+ *
+ * Purpose: Tic-tac-toe example demonstrating Redux state, actions, selectors, and undo.
+ * Interview Points:
+ * - Redux slice structure
+ * - Action dispatching and selectors
+ * - Derived game state and UI feedback
+ *
+ * Interview Questions to Prepare:
+ * Q1: What is a Redux selector?
+ * A: A function that reads state and returns derived values for components.
+ *
+ * Q2: Why use Redux for game state?
+ * A: It makes state predictable, centralized, and easy to debug across components.
+ *
+ * Q3: How can you implement undo behavior in Redux?
+ * A: Store history in state and dispatch actions that restore previous snapshots.
+ */
 import { useSelector, useDispatch } from 'react-redux';
 import { 
   makeMove, 
