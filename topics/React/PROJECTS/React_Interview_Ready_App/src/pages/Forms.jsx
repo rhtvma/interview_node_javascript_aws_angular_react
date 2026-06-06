@@ -19,34 +19,35 @@
  */
 import { useState, useRef } from 'react';
 import useDebounce from '../hooks/useDebounce';
+import InterviewQuestionSet from '../components/interview/InterviewQuestionSet';
+import { pageInterviewQuestions } from '../data/interviewBank';
 
-/**
- * FORMS PAGE - Interview Topic: Controlled vs Uncontrolled Components
- * Demonstrates: Both form patterns, validation, debouncing
- */
 function Forms() {
-    // Controlled Component State
     const [controlled, setControlled] = useState({
         name: '',
         email: '',
         message: ''
     });
 
-    // Uncontrolled Component Refs
     const nameRef = useRef();
     const emailRef = useRef();
     const messageRef = useRef();
-
-    // Validation state
     const [errors, setErrors] = useState({});
     const debouncedEmail = useDebounce(controlled.email, 500);
 
-    // Controlled form handlers
+    const validateForm = (data) => {
+        const nextErrors = {};
+        if (!data.name.trim()) nextErrors.name = 'Name is required';
+        if (!data.email.trim()) nextErrors.email = 'Email is required';
+        else if (!/\S+@\S+\.\S+/.test(data.email)) nextErrors.email = 'Email is invalid';
+        if (!data.message.trim()) nextErrors.message = 'Message is required';
+        return nextErrors;
+    };
+
     const handleControlledChange = (e) => {
         const { name, value } = e.target;
         setControlled(prev => ({ ...prev, [name]: value }));
 
-        // Clear error when user types
         if (errors[name]) {
             setErrors(prev => ({ ...prev, [name]: '' }));
         }
@@ -54,18 +55,17 @@ function Forms() {
 
     const handleControlledSubmit = (e) => {
         e.preventDefault();
-        const newErrors = validateForm(controlled);
+        const nextErrors = validateForm(controlled);
 
-        if (Object.keys(newErrors).length === 0) {
+        if (Object.keys(nextErrors).length === 0) {
             console.log('Controlled form submitted:', controlled);
-            alert('Controlled form submitted! Check console.');
+            alert('Controlled form submitted. Check console.');
             setControlled({ name: '', email: '', message: '' });
         } else {
-            setErrors(newErrors);
+            setErrors(nextErrors);
         }
     };
 
-    // Uncontrolled form handler
     const handleUncontrolledSubmit = (e) => {
         e.preventDefault();
         const formData = {
@@ -75,35 +75,30 @@ function Forms() {
         };
 
         console.log('Uncontrolled form submitted:', formData);
-        alert('Uncontrolled form submitted! Check console.');
+        alert('Uncontrolled form submitted. Check console.');
         e.target.reset();
-    };
-
-    // Validation function
-    const validateForm = (data) => {
-        const errors = {};
-        if (!data.name.trim()) errors.name = 'Name is required';
-        if (!data.email.trim()) errors.email = 'Email is required';
-        else if (!/\S+@\S+\.\S+/.test(data.email)) errors.email = 'Email is invalid';
-        if (!data.message.trim()) errors.message = 'Message is required';
-        return errors;
     };
 
     return (
         <div className="forms-page">
-            <h1>Forms Demo 📝</h1>
+            <header className="page-header">
+                <p className="page-eyebrow">React Forms</p>
+                <h1 className="page-title">Forms Demo</h1>
+                <p className="page-subtitle">
+                    Compare controlled and uncontrolled form patterns with validation and refs.
+                </p>
+            </header>
 
             <div className="forms-container">
-                {/* Controlled Component Form */}
                 <section className="form-section">
                     <h2>Controlled Component</h2>
                     <p className="form-description">
-                        React controls the form state. Value is stored in component state.
+                        React stores each input value in component state.
                     </p>
 
                     <form onSubmit={handleControlledSubmit}>
                         <div className="form-group">
-                            <label htmlFor="controlled-name">Name:</label>
+                            <label htmlFor="controlled-name">Name</label>
                             <input
                                 id="controlled-name"
                                 name="name"
@@ -115,7 +110,7 @@ function Forms() {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="controlled-email">Email:</label>
+                            <label htmlFor="controlled-email">Email</label>
                             <input
                                 id="controlled-email"
                                 name="email"
@@ -129,7 +124,7 @@ function Forms() {
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="controlled-message">Message:</label>
+                            <label htmlFor="controlled-message">Message</label>
                             <textarea
                                 id="controlled-message"
                                 name="message"
@@ -147,46 +142,31 @@ function Forms() {
                     </form>
 
                     <div className="form-state">
-                        <h4>Current State:</h4>
+                        <h4>Current State</h4>
                         <pre>{JSON.stringify(controlled, null, 2)}</pre>
                     </div>
                 </section>
 
-                {/* Uncontrolled Component Form */}
                 <section className="form-section">
                     <h2>Uncontrolled Component</h2>
                     <p className="form-description">
-                        DOM controls the form state. Access values using refs.
+                        The DOM stores the input values and React reads them through refs.
                     </p>
 
                     <form onSubmit={handleUncontrolledSubmit}>
                         <div className="form-group">
-                            <label htmlFor="uncontrolled-name">Name:</label>
-                            <input
-                                id="uncontrolled-name"
-                                ref={nameRef}
-                                defaultValue=""
-                            />
+                            <label htmlFor="uncontrolled-name">Name</label>
+                            <input id="uncontrolled-name" ref={nameRef} defaultValue="" />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="uncontrolled-email">Email:</label>
-                            <input
-                                id="uncontrolled-email"
-                                ref={emailRef}
-                                type="email"
-                                defaultValue=""
-                            />
+                            <label htmlFor="uncontrolled-email">Email</label>
+                            <input id="uncontrolled-email" ref={emailRef} type="email" defaultValue="" />
                         </div>
 
                         <div className="form-group">
-                            <label htmlFor="uncontrolled-message">Message:</label>
-                            <textarea
-                                id="uncontrolled-message"
-                                ref={messageRef}
-                                defaultValue=""
-                                rows="4"
-                            />
+                            <label htmlFor="uncontrolled-message">Message</label>
+                            <textarea id="uncontrolled-message" ref={messageRef} defaultValue="" rows="4" />
                         </div>
 
                         <button type="submit" className="btn btn-secondary">
@@ -196,9 +176,8 @@ function Forms() {
                 </section>
             </div>
 
-            {/* Comparison Table */}
             <section className="comparison-section">
-                <h2>Controlled vs Uncontrolled Comparison</h2>
+                <h2>Controlled vs Uncontrolled</h2>
                 <table className="comparison-table">
                     <thead>
                         <tr>
@@ -225,28 +204,26 @@ function Forms() {
                         </tr>
                         <tr>
                             <td>Use Case</td>
-                            <td>Complex forms, validation</td>
-                            <td>Simple forms, file inputs</td>
+                            <td>Complex forms</td>
+                            <td>Simple forms</td>
                         </tr>
                     </tbody>
                 </table>
             </section>
 
-            {/* Interview Notes */}
             <section className="interview-notes">
-                <h2>🎯 Form Interview Topics</h2>
+                <h2>Form Interview Topics</h2>
                 <ul>
-                    <li><strong>Controlled:</strong> React manages state, value prop</li>
-                    <li><strong>Uncontrolled:</strong> DOM manages state, refs</li>
-                    <li><strong>Validation:</strong> Real-time vs on-submit</li>
-                    <li><strong>Performance:</strong> Controlled can cause re-renders</li>
-                    <li><strong>Use Cases:</strong> When to use each pattern</li>
+                    <li><strong>Controlled:</strong> React manages state through value props.</li>
+                    <li><strong>Uncontrolled:</strong> the DOM manages state and refs read values.</li>
+                    <li><strong>Validation:</strong> immediate feedback versus submit-time checks.</li>
+                    <li><strong>Performance:</strong> choose the pattern based on form complexity.</li>
                 </ul>
             </section>
+
+            <InterviewQuestionSet {...pageInterviewQuestions.forms} />
         </div>
     );
 }
 
 export default Forms;
-
-// Made with ❤️ for Interview Preparation
