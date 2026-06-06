@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/shopiq-angular",
+            "outputPath": "dist/interview-ready-angular-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -46,8 +46,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": { "buildTarget": "shopiq-angular:build:production" },
-            "development": { "buildTarget": "shopiq-angular:build:development" }
+            "production": { "buildTarget": "interview-ready-angular-app:build:production" },
+            "development": { "buildTarget": "interview-ready-angular-app:build:development" }
           },
           "defaultConfiguration": "development"
         }

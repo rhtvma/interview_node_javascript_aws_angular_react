@@ -51,13 +51,13 @@ const passwordMatchValidator: ValidatorFn = (group: AbstractControl): Validation
               <div class="form-group">
                 <label class="form-label">First Name</label>
                 <input type="text" formControlName="firstName" class="form-input"
-                       [class.error]="isInvalid('firstName')" placeholder="Arjun">
+                       [class.error]="isInvalid('firstName')" placeholder="Rohit">
                 <span class="form-error" *ngIf="isInvalid('firstName')">Required</span>
               </div>
               <div class="form-group">
                 <label class="form-label">Last Name</label>
                 <input type="text" formControlName="lastName" class="form-input"
-                       [class.error]="isInvalid('lastName')" placeholder="Sharma">
+                       [class.error]="isInvalid('lastName')" placeholder="Verma">
                 <span class="form-error" *ngIf="isInvalid('lastName')">Required</span>
               </div>
             </div>
