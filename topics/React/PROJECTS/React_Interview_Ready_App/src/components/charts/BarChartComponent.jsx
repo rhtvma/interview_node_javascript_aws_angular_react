@@ -2,13 +2,23 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import PropTypes from 'prop-types';
 
 /**
- * BAR CHART COMPONENT
- * 
- * Interview Topics Covered:
- * - Data visualization with bars
- * - Component composition
- * - Props validation
- * - Responsive design
+ * BAR CHART COMPONENT - Interview Topic: Data Visualization
+ *
+ * Purpose: Render a reusable bar chart with configurable series and layout.
+ * Interview Points:
+ * - Data visualization with recharts
+ * - Component composition and prop configuration
+ * - Responsive UI and chart layout
+ *
+ * Interview Questions to Prepare:
+ * Q1: Why use a chart component instead of inline chart code?
+ * A: It centralizes configuration, keeps pages cleaner, and improves reuse.
+ *
+ * Q2: How do you support both horizontal and vertical charts?
+ * A: Pass a layout prop and adjust axis configuration accordingly.
+ *
+ * Q3: What should chart components validate with PropTypes?
+ * A: Required data arrays, keys, and optional layout props to avoid runtime errors.
  */
 
 const BarChartComponent = ({

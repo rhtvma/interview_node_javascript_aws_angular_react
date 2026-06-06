@@ -1,16 +1,33 @@
+/**
+ * LOGIN PAGE - Interview Topic: Authentication Flow
+ *
+ * Purpose: Simple login flow for route protection and demo auth state.
+ * Interview Points:
+ * - Form handling and async login
+ * - Redirect after login
+ * - Protected route user flow
+ *
+ * Interview Questions to Prepare:
+ * Q1: What is the typical client-side auth flow?
+ * A: Collect credentials, validate, store session state, and protect routes/components.
+ *
+ * Q2: Why use location.state.from for redirects?
+ * A: To return users to their intended destination after authentication.
+ *
+ * Q3: What should you do after a failed login attempt?
+ * A: Clear loading state, show a user-friendly error, and avoid side effects.
+ */
 import { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import InterviewQuestionSet from '../components/interview/InterviewQuestionSet';
+import { pageInterviewQuestions } from '../data/interviewBank';
 
-/**
- * LOGIN PAGE - Interview Topic: Forms & Authentication
- * Demonstrates: Controlled components, form handling, authentication flow
- */
 function Login() {
   const navigate = useNavigate();
   const location = useLocation();
   const { login } = useAuth();
-  
+
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -23,12 +40,13 @@ function Login() {
     setLoading(true);
 
     const result = await login(formData.email, formData.password);
-    
+
     if (result.success) {
       navigate(from, { replace: true });
     } else {
       setError(result.error || 'Login failed');
     }
+
     setLoading(false);
   };
 
@@ -41,11 +59,13 @@ function Login() {
 
   return (
     <div className="login-page">
-      <div className="login-container">
+      <div className="login-layout">
+        <div className="login-container">
+        <p className="page-eyebrow">Authentication</p>
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email</label>
             <input
               id="email"
               name="email"
@@ -55,9 +75,9 @@ function Login() {
               required
             />
           </div>
-          
+
           <div className="form-group">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password</label>
             <input
               id="password"
               name="password"
@@ -74,15 +94,16 @@ function Login() {
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
-        
+
         <p className="demo-note">
-          💡 Demo: Use any email/password to login
+          Demo: use any email and password to login.
         </p>
+        </div>
+
+        <InterviewQuestionSet {...pageInterviewQuestions.login} />
       </div>
     </div>
   );
 }
 
 export default Login;
-
-// Made with ❤️ for Interview Preparation

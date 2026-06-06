@@ -10,6 +10,7 @@ A comprehensive collection of interview preparation materials, code examples, an
 - [Interview Logic Questions](./interviews/logics.js)
 - **Company-Specific Interviews:**
   - [ALTRAN](./interviews/COMPANIES/ALTRAN.md)
+  - [ANAPLAN](./interviews/COMPANIES/ANAPLAN.md)
   - [Hexaware Technologies](./interviews/COMPANIES/Hexaware%20Technologies.md)
   - [Node.js Interview Questions](./interviews/COMPANIES/Node_interviiew.md)
   - [Policy Bazar](./interviews/COMPANIES/Policy%20bazar.md)
@@ -39,9 +40,11 @@ A comprehensive collection of interview preparation materials, code examples, an
 ### 🟩 [Node.js](./topics/NodeJs/)
 - **[📘 Node.js Concepts - Interview Ready](./topics/NodeJs/Node_Concepts.md)**
 - [Authentication & Authorization](./topics/NodeJs/Authentication_Authorization.md)
+- [API Versioning](./topics/NodeJs/API_Versioning.md)
 - [API Components](./topics/NodeJs/Components_of_API.md)
 - [Design Patterns](./topics/NodeJs/design_patterns.md)
 - [HTTP Methods](./topics/NodeJs/HTTP_methods.md)
+- [JWT Token Usage & Security](./topics/NodeJs/JWT_Token.md)
 - [Node Cluster](./topics/NodeJs/Cluster.js)
 - [Node.js Security](./topics/NodeJs/NodeJs_Security.md)
 - **[Event Loop](./topics/NodeJs/event_loop/)**
