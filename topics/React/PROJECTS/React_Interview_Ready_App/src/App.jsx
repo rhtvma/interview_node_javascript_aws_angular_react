@@ -8,6 +8,7 @@ import HooksDemo from './pages/HooksDemo';
 import Forms from './pages/Forms';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
+import InterviewReady from './pages/InterviewReady';
 import './App.css';
 
 /**
@@ -17,10 +18,11 @@ import './App.css';
  */
 function App() {
   const { theme } = useTheme();
+  const themeClass = theme === 'dark' ? 'theme-dark dark' : 'theme-light';
 
   return (
     <BrowserRouter>
-      <div className={`app theme-${theme} min-h-screen`}>
+      <div className={`app ${themeClass} min-h-screen`}>
         {/* Sidebar Navigation */}
         <Sidebar />
 
@@ -31,6 +33,7 @@ function App() {
             <Route path="/game" element={<Game />} />
             <Route path="/hooks" element={<HooksDemo />} />
             <Route path="/forms" element={<Forms />} />
+            <Route path="/interview-ready" element={<InterviewReady />} />
             <Route path="/login" element={<Login />} />
             <Route
               path="/dashboard"

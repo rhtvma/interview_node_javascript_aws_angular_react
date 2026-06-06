@@ -1,269 +1,252 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import InterviewQuestionSet from '../components/interview/InterviewQuestionSet';
+import { topicInterviewQuestions } from '../data/interviewBank';
 
-/**
- * MODERN FINANCIAL DASHBOARD HOME PAGE
- * 
- * Interview Topics Covered:
- * - Modern dashboard design
- * - Responsive grid layouts
- * - Card-based UI components
- * - Interactive elements
- * - Gradient styling
- * - Financial UI patterns
- */
+const metrics = [
+  { label: 'Hooks Covered', value: '15+', trend: 'Core and custom hooks' },
+  { label: 'Practice Areas', value: '6', trend: 'Routing, Redux, forms' },
+  { label: 'Examples', value: '50+', trend: 'Hands-on interview code' },
+];
+
+const topics = [
+  {
+    title: 'State Management',
+    description: 'Practice useState, useReducer, Context API, and Redux Toolkit patterns.',
+  },
+  {
+    title: 'Routing and Auth',
+    description: 'Understand protected routes, redirects, and authenticated navigation.',
+  },
+  {
+    title: 'Forms',
+    description: 'Compare controlled and uncontrolled inputs with validation examples.',
+  },
+  {
+    title: 'Hooks',
+    description: 'Review built-in hooks and custom hook extraction with working demos.',
+  },
+];
+
+const recentActivity = [
+  ['Redux game logic', 'Move handling, scores, undo'],
+  ['Forms demo', 'Validation and debounced input'],
+  ['Protected dashboard', 'AuthContext and route guard'],
+];
+
+const interviewTips = [
+  'Start with the problem in plain English before writing code.',
+  'Explain trade-offs when choosing state, context, Redux, or refs.',
+  'Name render performance risks only when they matter to the UI.',
+  'Use small examples to describe hooks, effects, cleanup, and dependencies.',
+];
+
+const interviewQuestions = [
+  {
+    question: 'When would you use useReducer instead of useState?',
+    answer: 'Use useReducer when state transitions are related, multi-step, or easier to describe as actions.',
+  },
+  {
+    question: 'What problem does useEffect cleanup solve?',
+    answer: 'Cleanup removes subscriptions, timers, listeners, or pending work before the next effect or unmount.',
+  },
+  {
+    question: 'How do protected routes work in React Router?',
+    answer: 'They check auth state before rendering and redirect unauthenticated users to a login route.',
+  },
+  {
+    question: 'Why can Context cause extra renders?',
+    answer: 'Every consumer can re-render when the provider value changes, so split context by responsibility.',
+  },
+];
 
 function Home() {
   const [selectedPeriod, setSelectedPeriod] = useState('week');
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4 md:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-2">
-            Financial Dashboard
-          </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Track your performance and analytics
-          </p>
+    <div className="page-shell">
+      <header className="page-header">
+        <p className="page-eyebrow">React Interview Ready</p>
+        <h1 className="page-title">A clean practice dashboard for React concepts.</h1>
+        <p className="page-subtitle">
+          Review the most common React interview topics through small, focused examples with
+          clear spacing, readable cards, and simple navigation.
+        </p>
+      </header>
+
+      <section className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-6">
+        <div className="card accent-card metric-card">
+          <div>
+            <p className="card-title">Current Focus</p>
+            <p className="card-muted">Prepare with practical React examples.</p>
+          </div>
+          <div>
+            <div className="metric-value">Ready</div>
+            <div className="metric-trend">Start with any module</div>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Main Content - Left Side (2 columns) */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Stats Cards Row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {/* Card 1 - Primary with gradient */}
-              <div className="bg-gradient-to-br from-cyan-400 to-cyan-500 rounded-2xl p-6 text-white shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-sm opacity-90 mb-2">Total Revenue</div>
-                <div className="text-3xl font-bold mb-1">2,100</div>
-                <div className="text-sm opacity-90">Customers</div>
-                <div className="mt-4 flex items-center gap-2">
-                  <span className="text-2xl">↑</span>
-                  <span className="text-lg font-semibold">75%</span>
-                </div>
-              </div>
-
-              {/* Card 2 */}
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Total Orders</div>
-                <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">758</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Orders</div>
-                <div className="mt-4 flex items-center gap-2 text-cyan-500">
-                  <span className="text-2xl">↑</span>
-                  <span className="text-lg font-semibold">25%</span>
-                </div>
-              </div>
-
-              {/* Card 3 */}
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Conversion</div>
-                <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">7.25</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Rate</div>
-                <div className="mt-4 flex items-center gap-2 text-cyan-500">
-                  <span className="text-2xl">↑</span>
-                  <span className="text-lg font-semibold">33%</span>
-                </div>
-              </div>
-
-              {/* Card 4 */}
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-sm text-gray-600 dark:text-gray-400 mb-2">Total Sales</div>
-                <div className="text-3xl font-bold text-gray-800 dark:text-white mb-1">35K</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Sales</div>
-                <div className="mt-4 flex items-center gap-2 text-cyan-500">
-                  <span className="text-2xl">↑</span>
-                  <span className="text-lg font-semibold">68%</span>
-                </div>
-              </div>
+        {metrics.map((metric) => (
+          <div className="card metric-card" key={metric.label}>
+            <div>
+              <p className="card-title">{metric.label}</p>
+              <p className="card-muted">{metric.trend}</p>
             </div>
+            <div className="metric-value">{metric.value}</div>
+          </div>
+        ))}
+      </section>
 
-            {/* Weekly Summary Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-              <div className="flex justify-between items-center mb-6">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
-                    Weekly Summary
-                  </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    26-27 March, 2019
-                  </p>
-                </div>
-                <div className="flex gap-2">
+      <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="lg:col-span-2 space-y-6">
+          <div className="card">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-5">
+              <div>
+                <h2 className="card-title text-lg">Study Modules</h2>
+                <p className="card-muted">Pick a topic and work through the live demo.</p>
+              </div>
+              <div className="flex rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden w-fit">
+                {['week', 'month'].map((period) => (
                   <button
-                    onClick={() => setSelectedPeriod('week')}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedPeriod === 'week'
-                        ? 'bg-cyan-500 text-white'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
+                    key={period}
+                    onClick={() => setSelectedPeriod(period)}
+                    className={`px-4 py-2 text-sm font-semibold transition-colors ${
+                      selectedPeriod === period
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300'
                     }`}
                   >
-                    Week
+                    {period === 'week' ? 'Week' : 'Month'}
                   </button>
-                  <button
-                    onClick={() => setSelectedPeriod('month')}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                      selectedPeriod === 'month'
-                        ? 'bg-cyan-500 text-white'
-                        : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400'
-                    }`}
-                  >
-                    Month
-                  </button>
-                </div>
-              </div>
-              
-              {/* Placeholder for chart - can be replaced with actual chart later */}
-              <div className="h-64 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-800 rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">📊</div>
-                  <p className="text-gray-600 dark:text-gray-400">Chart visualization area</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-500 mt-2">
-                    {selectedPeriod === 'week' ? 'Weekly' : 'Monthly'} data view
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Activity Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
-                Recent Activity
-              </h3>
-              <div className="space-y-4">
-                {[
-                  { icon: '💰', title: 'Payment received', amount: '+$2,500', time: '2 hours ago', color: 'text-green-500' },
-                  { icon: '🛒', title: 'New order placed', amount: '+$1,200', time: '5 hours ago', color: 'text-blue-500' },
-                  { icon: '📤', title: 'Withdrawal processed', amount: '-$500', time: '1 day ago', color: 'text-red-500' },
-                  { icon: '💳', title: 'Card payment', amount: '-$150', time: '2 days ago', color: 'text-orange-500' },
-                ].map((activity, index) => (
-                  <div key={index} className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="text-3xl">{activity.icon}</div>
-                      <div>
-                        <p className="font-medium text-gray-800 dark:text-white">{activity.title}</p>
-                        <p className="text-sm text-gray-500 dark:text-gray-400">{activity.time}</p>
-                      </div>
-                    </div>
-                    <div className={`text-lg font-bold ${activity.color}`}>
-                      {activity.amount}
-                    </div>
-                  </div>
                 ))}
               </div>
             </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link to="/game" className="block rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-500 hover:shadow-sm transition">
+                <p className="page-eyebrow">Redux</p>
+                <h3 className="card-title">Tic-Tac-Toe</h3>
+                <p className="card-muted">Practice selectors, actions, and reducer-driven UI.</p>
+              </Link>
+              <Link to="/hooks" className="block rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-500 hover:shadow-sm transition">
+                <p className="page-eyebrow">Hooks</p>
+                <h3 className="card-title">Hooks Demo</h3>
+                <p className="card-muted">Explore built-in hooks and reusable custom hooks.</p>
+              </Link>
+              <Link to="/forms" className="block rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-500 hover:shadow-sm transition">
+                <p className="page-eyebrow">Forms</p>
+                <h3 className="card-title">Form Patterns</h3>
+                <p className="card-muted">Compare controlled and uncontrolled form approaches.</p>
+              </Link>
+              <Link to="/login" className="block rounded-lg border border-gray-200 dark:border-gray-700 p-4 hover:border-blue-500 hover:shadow-sm transition">
+                <p className="page-eyebrow">Auth</p>
+                <h3 className="card-title">Protected Routes</h3>
+                <p className="card-muted">Review login flow and route access protection.</p>
+              </Link>
+            </div>
           </div>
 
-          {/* Right Sidebar - Cards */}
-          <div className="space-y-6">
-            {/* My Cards Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">
-                My Cards
-              </h3>
-              
-              {/* Card 1 - VISA */}
-              <div className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl p-6 mb-4 text-white">
-                <div className="flex justify-between items-start mb-8">
-                  <div className="text-sm opacity-80">VISA</div>
-                  <div className="text-2xl">💳</div>
-                </div>
-                <div className="text-3xl font-bold mb-2">$45,000</div>
-                <div className="flex items-center gap-2 text-sm opacity-80">
-                  <span>••••</span>
-                  <span>••••</span>
-                  <span>5457</span>
-                </div>
-              </div>
+          <div className="card">
+            <h2 className="card-title text-lg mb-4">Interview Topic Map</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {topics.map((topic) => {
+                const questionCount = topicInterviewQuestions.find((item) => item.title === topic.title);
 
-              {/* Card 2 - VISA */}
-              <div className="bg-white dark:bg-gray-700 border-2 border-gray-200 dark:border-gray-600 rounded-xl p-6 mb-4">
-                <div className="flex justify-between items-start mb-8">
-                  <div className="text-sm text-gray-600 dark:text-gray-400">VISA</div>
-                  <div className="text-2xl">💳</div>
+                return (
+                <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-4" key={topic.title}>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{topic.title}</h3>
+                  <p className="card-muted">{topic.description}</p>
+                  {questionCount && (
+                    <p className="mt-3 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                      {questionCount.beginner.length + questionCount.advanced.length} interview questions
+                    </p>
+                  )}
                 </div>
-                <div className="text-3xl font-bold text-gray-800 dark:text-white mb-2">$45,000</div>
-                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                  <span>••••</span>
-                  <span>••••</span>
-                  <span>5157</span>
-                </div>
-              </div>
-
-              {/* Add Card Button */}
-              <button className="w-full py-4 border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-xl flex items-center justify-center text-gray-600 dark:text-gray-400 hover:border-cyan-500 hover:text-cyan-500 transition-colors">
-                <span className="text-2xl mr-2">+</span>
-                <span className="font-medium">Add New Card</span>
-              </button>
+                );
+              })}
             </div>
+          </div>
 
-            {/* Balance Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg">
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-                  Balanced
-                </h3>
-                <button className="text-2xl hover:scale-110 transition-transform">+</button>
-              </div>
-              <div className="text-4xl font-bold text-cyan-500 mb-6">$45,000</div>
-              
-              {/* Income/Expense */}
-              <div className="space-y-4">
-                <div className="bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-xl p-4 text-white">
-                  <div className="text-sm opacity-90 mb-1">Income</div>
-                  <div className="text-2xl font-bold">$1,000</div>
-                </div>
-                <div className="bg-gradient-to-r from-slate-700 to-slate-800 rounded-xl p-4 text-white">
-                  <div className="text-sm opacity-90 mb-1">Expense</div>
-                  <div className="text-2xl font-bold">$545</div>
-                </div>
-              </div>
+          {topicInterviewQuestions.map((topic) => (
+            <InterviewQuestionSet
+              key={topic.title}
+              title={`${topic.title} Questions`}
+              description={topic.description}
+              beginner={topic.beginner}
+              advanced={topic.advanced}
+            />
+          ))}
 
-              {/* Action Buttons */}
-              <div className="mt-6 space-y-3">
-                <button className="w-full py-3 border-2 border-gray-300 dark:border-gray-600 rounded-xl flex items-center justify-center text-gray-700 dark:text-gray-300 hover:border-cyan-500 hover:text-cyan-500 transition-colors font-medium">
-                  <span className="text-xl mr-2">+</span>
-                  Add Fund
-                </button>
-                <button className="w-full py-3 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-xl text-white font-medium hover:shadow-lg transition-shadow">
-                  WITHDRAW
-                </button>
-              </div>
+          <div className="card">
+            <div className="mb-5">
+              <h2 className="card-title text-lg">Interview Tips</h2>
+              <p className="card-muted">Use these habits while explaining your code in interviews.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {interviewTips.map((tip, index) => (
+                <div className="flex gap-3 rounded-lg border border-gray-200 dark:border-gray-700 p-4" key={tip}>
+                  <span className="w-7 h-7 rounded-md bg-blue-50 text-blue-700 dark:bg-blue-950 dark:text-blue-300 flex items-center justify-center text-sm font-bold flex-shrink-0">
+                    {index + 1}
+                  </span>
+                  <p className="text-sm leading-6 text-gray-700 dark:text-gray-300">{tip}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="card">
+            <div className="mb-5">
+              <h2 className="card-title text-lg">Common Interview Questions</h2>
+              <p className="card-muted">Short, interview-ready answers for important React concepts.</p>
+            </div>
+            <div className="space-y-4">
+              {interviewQuestions.map((item) => (
+                <div className="border-b border-gray-200 dark:border-gray-700 pb-4 last:border-b-0 last:pb-0" key={item.question}>
+                  <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{item.question}</h3>
+                  <p className="card-muted">{item.answer}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
-      </div>
+
+        <aside className="space-y-6">
+          <div className="card">
+            <h2 className="card-title text-lg mb-4">Progress Snapshot</h2>
+            <div className="space-y-4">
+              {[
+                ['Concept Review', '72%'],
+                ['Practice Code', '58%'],
+                ['Mock Questions', '84%'],
+              ].map(([label, value]) => (
+                <div key={label}>
+                  <div className="flex justify-between text-sm mb-2">
+                    <span className="text-gray-700 dark:text-gray-300">{label}</span>
+                    <span className="font-semibold text-gray-900 dark:text-white">{value}</span>
+                  </div>
+                  <div className="h-2 rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                    <div className="h-full rounded-full bg-blue-600" style={{ width: value }} />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="card">
+            <h2 className="card-title text-lg mb-4">Recent Activity</h2>
+            <div className="space-y-3">
+              {recentActivity.map(([title, description]) => (
+                <div className="border-b border-gray-200 dark:border-gray-700 pb-3 last:border-b-0 last:pb-0" key={title}>
+                  <p className="font-semibold text-gray-900 dark:text-white">{title}</p>
+                  <p className="card-muted">{description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+      </section>
     </div>
   );
 }
 
 export default Home;
-
-/**
- * INTERVIEW NOTES:
- * 
- * 1. Modern Dashboard Design:
- *    - Card-based layout
- *    - Financial UI patterns
- *    - Gradient backgrounds
- *    - Responsive grid system
- * 
- * 2. Component Structure:
- *    - Stat cards with metrics
- *    - Activity feed
- *    - Card management
- *    - Balance tracking
- * 
- * 3. UX Patterns:
- *    - Hover effects
- *    - Smooth transitions
- *    - Clear visual hierarchy
- *    - Action buttons
- * 
- * 4. Responsive Design:
- *    - Mobile-first approach
- *    - Grid adapts to screen size
- *    - Touch-friendly buttons
- */
-
-// Made with Bob
