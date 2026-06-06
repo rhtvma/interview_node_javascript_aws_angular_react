@@ -100,7 +100,7 @@ import { ToastService } from '../../../core/services/toast.service';
             <div class="demo-hint">
               <span>Demo:</span>
               <button type="button" class="demo-fill" (click)="fillDemo()">
-                rohit@gmail.com / admin@123
+                rohit"&#64;gmail.com / admin"&#64;123
               </button>
             </div>
           </form>
