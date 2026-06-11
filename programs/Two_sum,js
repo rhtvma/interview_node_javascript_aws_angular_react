@@ -1,0 +1,18 @@
+//const arr1 = [1,2,3,4,5]
+// two sunm - 7
+
+function towSum(arr, targetSum) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length; j++) {
+            if (targetSum === arr[i] + arr[j]) {
+                return [i, j]
+            } else {
+                console.log(arr[i] + arr[j])
+            }
+
+        }
+    }
+    return null
+}
+
+console.log(towSum([3, 2, 4], 6))
