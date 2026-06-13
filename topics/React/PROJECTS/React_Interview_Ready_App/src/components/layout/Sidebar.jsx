@@ -29,6 +29,7 @@ const navItems = [
     { path: '/hooks', label: 'Hooks Demo', icon: 'K', public: true },
     { path: '/forms', label: 'Forms', icon: 'F', public: true },
     { path: '/interview-ready', label: 'Interview Ready', icon: 'R', public: true },
+    { path: '/practice', label: 'Practice', icon: 'P', public: true },
     { path: '/dashboard', label: 'Dashboard', icon: 'D', protected: true },
 ];
 
