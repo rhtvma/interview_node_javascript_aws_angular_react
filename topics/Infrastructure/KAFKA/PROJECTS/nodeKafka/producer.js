@@ -22,7 +22,7 @@ async function runProducer() {
                 { key: 'key1', value: 'Hello from Node.js Kafka Producer!' },
             ],
         });
-        
+
         console.log('Message sent successfully:', result);
 
         await producer.disconnect();
@@ -34,3 +34,16 @@ async function runProducer() {
 }
 
 runProducer();
+
+/**
+  Message sent successfully: [
+    {
+        topicName: 'test-topic',
+        partition: 0,
+        errorCode: 0,
+        baseOffset: '18',
+        logAppendTime: '-1',
+        logStartOffset: '0'
+    }
+  ]
+ */
