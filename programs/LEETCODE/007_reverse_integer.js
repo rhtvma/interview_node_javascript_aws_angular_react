@@ -42,3 +42,20 @@ Explanation:
 Modulo extracts the current last digit. Multiplying the result by 10 shifts its
 digits left before appending the extracted digit.
 */
+
+
+// ============================ ANOTHER EXAMPLE ============================
+
+function reverseNumber(n) {
+  const sign = n < 0 ? -1 : 1;
+  let x = Math.abs(n);
+  let rev = 0;
+
+  while (x > 0) {
+    const digit = x % 10;
+    rev = rev * 10 + digit;
+    x = Math.floor(x / 10);
+  }
+
+  return sign * rev;
+}

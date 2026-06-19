@@ -2,8 +2,8 @@ function maxOcc(array) {
   if (array.length === 0) return null;
 
   var modeMap = {};
-  var maxElement = array[0],
-    maxCount = 1;
+  var maxElement = array[0]
+  var maxCount = 1;
 
   for (var i = 0; i < array.length; i++) {
     var el = array[i];
