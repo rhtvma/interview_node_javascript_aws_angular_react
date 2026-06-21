@@ -1,9 +1,9 @@
-PS C:\Users\002TEX744>  podman machine init podman-machine-default
+PS C:\Users\rhtvma>  podman machine init podman-machine-default
 Error: podman-machine-default: VM already exists
 
 
 
-PS C:\Users\002TEX744>  podman machine start
+PS C:\Users\rhtvma>  podman machine start
 Starting machine "podman-machine-default"
 There is no distribution with the supplied name.
 Error code: Wsl/Service/WSL_E_DISTRO_NOT_FOUND
@@ -11,37 +11,37 @@ Error: the WSL bootstrap script failed: command C:\WINDOWS\system32\wsl.exe [wsl
 
 
 
-PS C:\Users\002TEX744> wsl --status
+PS C:\Users\rhtvma> wsl --status
 Default Distribution: Ubuntu
 Default Version: 2
 
-PS C:\Users\002TEX744> wsl --shutdown
+PS C:\Users\rhtvma> wsl --shutdown
 
-PS C:\Users\002TEX744> podman machine rm -f podman-machine-default
+PS C:\Users\rhtvma> podman machine rm -f podman-machine-default
 Unregistering.
 There is no distribution with the supplied name.
 Error code: Wsl/Service/WSL_E_DISTRO_NOT_FOUND
 time="2026-06-09T11:50:05+05:30" level=error msg="failed to remove virtual machine from provider for \"podman-machine-default\": command C:\\
 
-PS C:\Users\002TEX744> wsl --install
+PS C:\Users\rhtvma> wsl --install
 A distribution with the supplied name already exists. Use --name to chose a different name.
 Error code: Wsl/InstallDistro/ERROR_ALREADY_EXISTS
 
 
 
-PS C:\Users\002TEX744> wsl --install
+PS C:\Users\rhtvma> wsl --install
 A distribution with the supplied name already exists. Use --name to chose a different name.
 Error code: Wsl/InstallDistro/ERROR_ALREADY_EXISTS
-PS C:\Users\002TEX744> wsl --update
+PS C:\Users\rhtvma> wsl --update
 Checking for updates.
 Updating Windows Subsystem for Linux to version: 2.7.3.
-PS C:\Users\002TEX744> wsl --status
+PS C:\Users\rhtvma> wsl --status
 Default Distribution: Ubuntu
 Default Version: 2
-PS C:\Users\002TEX744> wsl --set-default-version 2
+PS C:\Users\rhtvma> wsl --set-default-version 2
 For information on key differences with WSL 2 please visit https://aka.ms/wsl2
 The operation completed successfully.
-PS C:\Users\002TEX744> podman machine init
+PS C:\Users\rhtvma> podman machine init
 Looking up Podman Machine image at quay.io/podman/machine-os:5.8 to create VM
 Getting image source signatures
 Copying blob e2b6cbcadd8b done   |

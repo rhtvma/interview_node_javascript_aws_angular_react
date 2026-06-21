@@ -1,4 +1,4 @@
-# Anaplan Interview Experience - JUNE 2026
+# Anaplan Interview Experience - 6th JUNE 2026
 
 This interview focused on React fundamentals, JavaScript/TypeScript decision making, SQL indexing, API design, authentication with JWT, and production deployment using Docker/Kubernetes.
 
